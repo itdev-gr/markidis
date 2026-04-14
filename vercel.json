@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
+  "installCommand": "cd skypulse && npm install",
+  "buildCommand": "cd skypulse && npm run build",
+  "outputDirectory": "skypulse/dist",
+  "devCommand": "cd skypulse && npm run dev"
+}
