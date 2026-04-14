@@ -1,0 +1,153 @@
+---
+const { lang = "el" } = Astro.props;
+const t = {
+  el: { work: "Έργα", process: "Διαδικασία", about: "Στούντιο", contact: "Επικοινωνία", lang: "EN" },
+  en: { work: "Work", process: "Process", about: "Studio", contact: "Contact", lang: "EL" },
+}[lang as "el" | "en"];
+---
+
+<header class="sp-header">
+  <div class="sp-header-inner">
+    <a href="/" class="wordmark" aria-label="Sky Pulse">
+      sky<b>pulse</b>
+    </a>
+
+    <nav class="sp-nav" aria-label="Primary">
+      <a href="#work" class="sp-link">{t.work}</a>
+      <a href="#process" class="sp-link">{t.process}</a>
+      <a href="#studio" class="sp-link">{t.about}</a>
+      <a href="#contact" class="sp-link">{t.contact}</a>
+    </nav>
+
+    <div class="sp-header-meta">
+      <span class="mono text-[var(--color-muted)]">EST · 2026</span>
+      <a class="sp-link" href={lang === "el" ? "/en" : "/"}>{t.lang}</a>
+    </div>
+
+    <button id="mobileMenuToggle" class="sp-burger" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div id="mobileMenu" class="sp-mobile">
+  <nav>
+    <a href="#work">{t.work}</a>
+    <a href="#process">{t.process}</a>
+    <a href="#studio">{t.about}</a>
+    <a href="#contact">{t.contact}</a>
+  </nav>
+  <div class="sp-mobile-foot">
+    <a href="mailto:info@sky-pulse.gr">info@sky-pulse.gr</a>
+    <a href="tel:+306932669999">+30 6932 669999</a>
+  </div>
+</div>
+
+<style>
+  .sp-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.4rem clamp(1.25rem, 4vw, 3rem);
+    mix-blend-mode: difference;
+  }
+  .sp-header-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .sp-nav {
+    display: none;
+    justify-content: center;
+    gap: 2.75rem;
+  }
+  @media (min-width: 900px) {
+    .sp-nav { display: flex; }
+  }
+  .sp-header-meta {
+    display: none;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  @media (min-width: 900px) {
+    .sp-header-meta { display: flex; }
+  }
+  .sp-burger {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 32px;
+    height: 32px;
+    align-items: flex-end;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+  .sp-burger span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: #F4ECD8;
+    transition: transform .4s ease, width .4s ease;
+  }
+  .sp-burger span:nth-child(2) { width: 16px; }
+  @media (min-width: 900px) { .sp-burger { display: none; } }
+
+  .sp-mobile {
+    position: fixed;
+    inset: 0;
+    background: #1D1A14;
+    z-index: 99;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6rem 2rem 2rem;
+  }
+  .sp-mobile.active { display: flex; }
+  .sp-mobile nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .sp-mobile nav a {
+    font-family: "Fraunces", serif;
+    font-size: clamp(2.2rem, 9vw, 4.5rem);
+    color: #F4ECD8;
+    text-decoration: none;
+    letter-spacing: -0.03em;
+    font-weight: 300;
+  }
+  .sp-mobile-foot {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .sp-mobile-foot a { color: #B8AE92; text-decoration: none; }
+</style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("mobileMenuToggle");
+    const menu = document.getElementById("mobileMenu");
+    if (toggle && menu) {
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("active");
+        document.body.classList.toggle("no-scroll");
+      });
+      menu.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          menu.classList.remove("active");
+          document.body.classList.remove("no-scroll");
+        })
+      );
+    }
+  });
+</script>

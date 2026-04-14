@@ -1,0 +1,57 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: "el" | "en";
+}
+
+const {
+  title = "Sky Pulse — Bespoke Music for Elite Athletes",
+  description = "Sky Pulse composes custom music for figure skating, rhythmic & artistic gymnastics, and performance sports. Precision. Performance. Emotion.",
+  lang = "el",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#1D1A14" />
+    <meta name="description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/media/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://player.vimeo.com" />
+    <link rel="preconnect" href="https://i.vimeocdn.com" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/media/contact.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <title>{title}</title>
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      name: "Sky Pulse",
+      url: "https://www.sky-pulse.gr/",
+      email: "info@sky-pulse.gr",
+      telephone: "+30 6932669999",
+      description,
+      areaServed: "Worldwide",
+      genre: ["Sports Music", "Figure Skating Music", "Rhythmic Gymnastics Music"],
+    })} />
+  </head>
+  <body class="grain">
+    <slot />
+    <script>
+      import "../scripts/motion.ts";
+    </script>
+  </body>
+</html>

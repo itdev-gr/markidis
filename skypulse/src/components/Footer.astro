@@ -1,0 +1,77 @@
+---
+const { lang = "el" } = Astro.props;
+---
+
+<footer class="sp-footer">
+  <div class="container">
+    <hr class="rule" />
+    <div class="sp-footer-grid">
+      <div class="sp-footer-brand">
+        <div class="wordmark" style="font-size:3.5rem">sky<b>pulse</b></div>
+        <p class="sp-footer-tag display-italic">the sound of your movement.</p>
+      </div>
+
+      <div class="sp-footer-col">
+        <span class="eyebrow">Contact</span>
+        <a class="sp-footer-link" href="mailto:info@sky-pulse.gr">info@sky-pulse.gr</a>
+        <a class="sp-footer-link" href="tel:+306932669999">+30 6932 669999</a>
+      </div>
+
+      <div class="sp-footer-col">
+        <span class="eyebrow">Navigate</span>
+        <a class="sp-footer-link" href="#work">Work</a>
+        <a class="sp-footer-link" href="#process">Process</a>
+        <a class="sp-footer-link" href="#studio">Studio</a>
+        <a class="sp-footer-link" href="#contact">Contact</a>
+      </div>
+
+      <div class="sp-footer-col">
+        <span class="eyebrow">Legal</span>
+        <a class="sp-footer-link" href="/politiki-aporritou/">Privacy Policy</a>
+        <span class="sp-footer-link muted">© 2026 Sky Pulse</span>
+        <span class="sp-footer-link muted">Athens · Greece</span>
+      </div>
+    </div>
+
+    <div class="sp-footer-bottom">
+      <span class="mono">[LAT 37.9838 · LON 23.7275]</span>
+      <span class="mono">{lang === "el" ? "Εκ του μηδενός" : "Composed from silence"}</span>
+      <span class="mono">v 2026.04</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .sp-footer { padding: 6rem 0 3rem; position: relative; }
+  .sp-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 4rem 0;
+  }
+  @media (min-width: 900px) {
+    .sp-footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+  }
+  .sp-footer-brand { display: flex; flex-direction: column; gap: 1.25rem; }
+  .sp-footer-tag { font-size: 1.75rem; color: #B8AE92; max-width: 20ch; }
+  .sp-footer-col { display: flex; flex-direction: column; gap: 0.9rem; }
+  .sp-footer-link {
+    color: #F4ECD8;
+    text-decoration: none;
+    font-family: "Manrope", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    transition: color .3s ease;
+  }
+  .sp-footer-link:hover { color: #E8A33D; }
+  .sp-footer-link.muted { color: #B8AE92; }
+  .sp-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid #3D362A;
+    color: #B8AE92;
+  }
+</style>
