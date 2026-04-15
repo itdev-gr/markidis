@@ -1,0 +1,55 @@
+---
+import Staff from "../Staff.astro";
+const quotes = [
+  { q: "The music didn't just fit her routine. It wrote it.", a: "Head Coach · National Figure Skating Team" },
+  { q: "Every accent lands with her hoop. It feels composed to her body, not to a stopwatch.", a: "Senior Rhythmic Gymnast · Athens" },
+  { q: "Arena-ready on delivery. No post-mastering panic on competition day.", a: "Choreographer · Show Ensemble" },
+];
+---
+
+<section class="section testimonials">
+  <div class="container">
+    <span class="opus-mark" data-reveal>
+      <span class="opus-num">Opus VII.</span>
+      <span>Words — from coaches &amp; athletes</span>
+    </span>
+
+    <Staff height={32} class="test-staff" />
+
+    <div class="test-grid">
+      {quotes.map((t) => (
+        <figure class="test-card" data-reveal>
+          <blockquote class="display-italic test-q">“{t.q}”</blockquote>
+          <figcaption><span class="mono">— {t.a}</span></figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .test-staff { margin: 2rem 0 3rem; }
+  .test-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 1px solid #0E0E0E;
+    border-bottom: 1px solid #0E0E0E;
+  }
+  @media (min-width: 900px) { .test-grid { grid-template-columns: repeat(3, 1fr); } }
+  .test-card {
+    padding: 3rem 2rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    border-right: 1px solid #C9C0A8;
+    min-height: 320px;
+    transition: background .4s ease;
+  }
+  .test-card:last-child { border-right: 0; }
+  .test-card:hover { background: #E7DEC9; }
+  .test-q { font-size: clamp(1.4rem, 2.1vw, 1.85rem); color: #0E0E0E; margin: 0; line-height: 1.25; }
+  .test-card figcaption { color: #5C564A; }
+</style>
