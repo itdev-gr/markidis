@@ -106,35 +106,7 @@ body.no-scroll { overflow: hidden; }
   90% { transform: translate(-10%, 10%); }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  html, body, a, button, [role="button"] { cursor: none !important; }
-  .sp-cursor-dot, .sp-cursor-ring {
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 10000;
-    will-change: transform;
-  }
-  .sp-cursor-dot {
-    width: 6px; height: 6px;
-    background: #9B2A1F;
-    border-radius: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    mix-blend-mode: multiply;
-  }
-  .sp-cursor-ring {
-    width: 36px; height: 36px;
-    border: 1px solid #0E0E0E;
-    border-radius: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    transition: width .28s cubic-bezier(.7,0,.1,1), height .28s cubic-bezier(.7,0,.1,1), border-color .28s ease, background-color .28s ease;
-  }
-  .sp-cursor-ring[data-hover="true"] {
-    width: 80px; height: 80px;
-    background: #9B2A1F;
-    border-color: #9B2A1F;
-  }
-}
+/* custom cursor removed — native cursor restored */
 
 .reveal-char { display: inline-block; transform: translateY(110%) rotate(2deg); opacity: 0; will-change: transform, opacity; }
 .reveal-clip { overflow: hidden; display: inline-block; line-height: inherit; }

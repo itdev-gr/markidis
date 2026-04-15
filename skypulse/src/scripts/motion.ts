@@ -414,7 +414,7 @@ function initMarquee() {
    ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
   initLenis();
-  initCursor();
+  // initCursor(); // disabled — use native cursor
   initMagnetic();
   initReveals();
   initWaveform();
