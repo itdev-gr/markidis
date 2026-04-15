@@ -1,77 +1,81 @@
 ---
+import Staff from "./Staff.astro";
+import MusicGlyph from "./MusicGlyph.astro";
 const { lang = "el" } = Astro.props;
 ---
 
 <footer class="sp-footer">
+  <Staff height={48} notes={["𝄞", "♩", "♪", "♫", "𝄐"]} />
+
   <div class="container">
-    <hr class="rule" />
-    <div class="sp-footer-grid">
-      <div class="sp-footer-brand">
-        <div class="wordmark" style="font-size:3.5rem">sky<b>pulse</b></div>
-        <p class="sp-footer-tag display-italic">the sound of your movement.</p>
+    <div class="sp-colophon">
+      <div class="sp-colophon-brand">
+        <div class="wordmark" style="font-size:3.5rem">
+          <MusicGlyph glyph="treble" size="3.2rem" color="#9B2A1F" /> sky<b>pulse</b>
+        </div>
+        <p class="display-italic sp-colophon-tag">— the sound of your movement.</p>
       </div>
 
-      <div class="sp-footer-col">
+      <div class="sp-colophon-col">
         <span class="eyebrow">Contact</span>
-        <a class="sp-footer-link" href="mailto:info@sky-pulse.gr">info@sky-pulse.gr</a>
-        <a class="sp-footer-link" href="tel:+306932669999">+30 6932 669999</a>
+        <a href="mailto:info@sky-pulse.gr">info@sky-pulse.gr</a>
+        <a href="tel:+306932669999">+30 6932 669999</a>
       </div>
 
-      <div class="sp-footer-col">
-        <span class="eyebrow">Navigate</span>
-        <a class="sp-footer-link" href="#work">Work</a>
-        <a class="sp-footer-link" href="#process">Process</a>
-        <a class="sp-footer-link" href="#studio">Studio</a>
-        <a class="sp-footer-link" href="#contact">Contact</a>
+      <div class="sp-colophon-col">
+        <span class="eyebrow">Index</span>
+        <a href="#work">Selected work</a>
+        <a href="#process">Process</a>
+        <a href="#studio">Studio</a>
+        <a href="#contact">Booking</a>
       </div>
 
-      <div class="sp-footer-col">
-        <span class="eyebrow">Legal</span>
-        <a class="sp-footer-link" href="/politiki-aporritou/">Privacy Policy</a>
-        <span class="sp-footer-link muted">© 2026 Sky Pulse</span>
-        <span class="sp-footer-link muted">Athens · Greece</span>
+      <div class="sp-colophon-col">
+        <span class="eyebrow">Colophon</span>
+        <span>Set in Newsreader &amp; Geist</span>
+        <span>Athens · Greece</span>
+        <a href="/politiki-aporritou/">Privacy Policy</a>
       </div>
     </div>
 
-    <div class="sp-footer-bottom">
-      <span class="mono">[LAT 37.9838 · LON 23.7275]</span>
+    <hr class="rule rule-ink" />
+    <div class="sp-colophon-foot">
+      <span class="mono">© MMXXVI · sky pulse</span>
       <span class="mono">{lang === "el" ? "Εκ του μηδενός" : "Composed from silence"}</span>
-      <span class="mono">v 2026.04</span>
+      <span class="mono">[37.9838 N · 23.7275 E]</span>
     </div>
   </div>
 </footer>
 
 <style>
-  .sp-footer { padding: 6rem 0 3rem; position: relative; }
-  .sp-footer-grid {
+  .sp-footer { padding: 6rem 0 3rem; background: #F1ECDE; }
+  .sp-colophon {
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
     padding: 4rem 0;
   }
   @media (min-width: 900px) {
-    .sp-footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+    .sp-colophon { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
   }
-  .sp-footer-brand { display: flex; flex-direction: column; gap: 1.25rem; }
-  .sp-footer-tag { font-size: 1.75rem; color: #B8AE92; max-width: 20ch; }
-  .sp-footer-col { display: flex; flex-direction: column; gap: 0.9rem; }
-  .sp-footer-link {
-    color: #F4ECD8;
+  .sp-colophon-brand { display: flex; flex-direction: column; gap: 1rem; }
+  .sp-colophon-tag { font-size: 1.5rem; color: #5C564A; max-width: 22ch; }
+  .sp-colophon-col { display: flex; flex-direction: column; gap: 0.85rem; }
+  .sp-colophon-col a, .sp-colophon-col span:not(.eyebrow) {
+    color: #0E0E0E;
     text-decoration: none;
-    font-family: "Manrope", sans-serif;
-    font-size: 0.95rem;
-    font-weight: 300;
+    font-family: "Newsreader", serif;
+    font-size: 1.05rem;
+    font-weight: 400;
     transition: color .3s ease;
   }
-  .sp-footer-link:hover { color: #E8A33D; }
-  .sp-footer-link.muted { color: #B8AE92; }
-  .sp-footer-bottom {
+  .sp-colophon-col a:hover { color: #9B2A1F; }
+  .sp-colophon-foot {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
     padding-top: 2rem;
-    border-top: 1px solid #3D362A;
-    color: #B8AE92;
+    color: #5C564A;
   }
 </style>
