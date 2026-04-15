@@ -114,13 +114,13 @@ body.no-scroll { overflow: hidden; }
     pointer-events: none;
     z-index: 10000;
     will-change: transform;
-    mix-blend-mode: difference;
   }
   .sp-cursor-dot {
     width: 6px; height: 6px;
     background: #9B2A1F;
     border-radius: 50%;
     transform: translate3d(-50%, -50%, 0);
+    mix-blend-mode: multiply;
   }
   .sp-cursor-ring {
     width: 36px; height: 36px;

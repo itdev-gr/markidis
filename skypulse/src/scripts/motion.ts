@@ -382,11 +382,13 @@ function initHeroTimeline() {
   const hero = document.querySelector(".hero");
   if (!hero) return;
   const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-  tl.from(".hero-eyebrow", { opacity: 0, y: 20, duration: 1 }, 0.1);
-  tl.from(".hero-meta", { opacity: 0, y: 20, duration: 1 }, 0.2);
-  tl.from(".hero-cta", { opacity: 0, y: 20, duration: 1 }, 0.6);
-  tl.from(".hero-scroll", { opacity: 0, y: -10, duration: 1 }, 0.9);
-  tl.fromTo("#hero-wave", { opacity: 0 }, { opacity: 1, duration: 2 }, 0);
+  const safe = (sel: string, vars: gsap.TweenVars, at?: number) => {
+    if (document.querySelector(sel)) tl.from(sel, vars, at);
+  };
+  safe(".hero-opus", { opacity: 0, y: 20, duration: 1 }, 0.1);
+  safe(".hero-staff", { opacity: 0, y: 10, duration: 1.2 }, 0.4);
+  safe(".hero-meta", { opacity: 0, y: 20, duration: 1 }, 0.6);
+  safe(".hero-cta", { opacity: 0, y: 20, duration: 1 }, 0.9);
 }
 
 /* ============================================================
