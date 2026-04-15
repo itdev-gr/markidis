@@ -1,4 +1,5 @@
 ---
+import MusicGlyph from "./MusicGlyph.astro";
 const { lang = "el" } = Astro.props;
 const t = {
   el: { work: "Έργα", process: "Διαδικασία", about: "Στούντιο", contact: "Επικοινωνία", lang: "EN" },
@@ -9,7 +10,7 @@ const t = {
 <header class="sp-header">
   <div class="sp-header-inner">
     <a href="/" class="wordmark" aria-label="Sky Pulse">
-      sky<b>pulse</b>
+      <MusicGlyph glyph="treble" size="1.6em" color="#9B2A1F" /> sky<b>pulse</b>
     </a>
 
     <nav class="sp-nav" aria-label="Primary">
@@ -20,7 +21,7 @@ const t = {
     </nav>
 
     <div class="sp-header-meta">
-      <span class="mono text-[var(--color-muted)]">EST · 2026</span>
+      <span class="opus">Opus MMXXVI</span>
       <a class="sp-link" href={lang === "el" ? "/en" : "/"}>{t.lang}</a>
     </div>
 
@@ -28,6 +29,7 @@ const t = {
       <span></span><span></span>
     </button>
   </div>
+  <hr class="rule rule-ink sp-header-rule" />
 </header>
 
 <div id="mobileMenu" class="sp-mobile">
@@ -48,8 +50,8 @@ const t = {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 1.4rem clamp(1.25rem, 4vw, 3rem);
-    mix-blend-mode: difference;
+    background: rgba(241, 236, 222, 0.92);
+    backdrop-filter: blur(8px);
   }
   .sp-header-inner {
     display: grid;
@@ -58,23 +60,28 @@ const t = {
     gap: 2rem;
     max-width: 1600px;
     margin: 0 auto;
+    padding: 1.5rem clamp(1.5rem, 4vw, 3rem);
   }
-  .sp-nav {
-    display: none;
-    justify-content: center;
-    gap: 2.75rem;
+  .sp-header :global(.wordmark) {
+    font-size: 2rem;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
   }
-  @media (min-width: 900px) {
-    .sp-nav { display: flex; }
-  }
+  .sp-header :global(.sp-link) { font-size: 1rem; }
   .sp-header-meta {
     display: none;
     align-items: center;
     gap: 1.5rem;
   }
-  @media (min-width: 900px) {
-    .sp-header-meta { display: flex; }
-  }
+  .sp-header-meta :global(.opus) { font-size: 1.05rem; }
+  @media (min-width: 900px) { .sp-header-meta { display: flex; } }
+
+  .sp-nav { display: none; justify-content: center; gap: 3rem; }
+  @media (min-width: 900px) { .sp-nav { display: flex; } }
+
+  .sp-header-rule { opacity: 0.85; }
+
   .sp-burger {
     display: inline-flex;
     flex-direction: column;
@@ -87,20 +94,13 @@ const t = {
     border: 0;
     padding: 0;
   }
-  .sp-burger span {
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: #F4ECD8;
-    transition: transform .4s ease, width .4s ease;
-  }
+  .sp-burger span { display: block; width: 24px; height: 1px; background: #0E0E0E; }
   .sp-burger span:nth-child(2) { width: 16px; }
   @media (min-width: 900px) { .sp-burger { display: none; } }
 
   .sp-mobile {
-    position: fixed;
-    inset: 0;
-    background: #1D1A14;
+    position: fixed; inset: 0;
+    background: #F1ECDE;
     z-index: 99;
     display: none;
     flex-direction: column;
@@ -108,29 +108,26 @@ const t = {
     padding: 6rem 2rem 2rem;
   }
   .sp-mobile.active { display: flex; }
-  .sp-mobile nav {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
+  .sp-mobile nav { display: flex; flex-direction: column; gap: 1.5rem; }
   .sp-mobile nav a {
-    font-family: "Fraunces", serif;
-    font-size: clamp(2.2rem, 9vw, 4.5rem);
-    color: #F4ECD8;
-    text-decoration: none;
-    letter-spacing: -0.03em;
+    font-family: "Newsreader", serif;
+    font-style: italic;
     font-weight: 300;
+    font-size: clamp(2.2rem, 9vw, 4.5rem);
+    color: #0E0E0E;
+    text-decoration: none;
+    letter-spacing: -0.02em;
   }
   .sp-mobile-foot {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
   }
-  .sp-mobile-foot a { color: #B8AE92; text-decoration: none; }
+  .sp-mobile-foot a { color: #5C564A; text-decoration: none; }
 </style>
 
 <script is:inline>
