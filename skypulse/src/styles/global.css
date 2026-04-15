@@ -5,8 +5,8 @@
   --color-paper: #F1ECDE;
   --color-paper-deep: #E7DEC9;
   --color-ink: #0E0E0E;
-  --color-sanguine: #9B2A1F;
-  --color-marginalia: #5C564A;
+  --color-sanguine: #2A3890;
+  --color-marginalia: #6C6E70;
   --color-hairline: #C9C0A8;
 
   --font-display: "Newsreader", "Times New Roman", serif;
@@ -67,24 +67,24 @@ body.no-scroll { overflow: hidden; }
   letter-spacing: 0.32em;
   text-transform: uppercase;
   font-size: 0.72rem;
-  color: #5C564A;
+  color: #6C6E70;
 }
 .opus {
   font-family: "Newsreader", serif;
   font-style: italic;
   font-weight: 300;
-  color: #9B2A1F;
+  color: #2A3890;
 }
 
 .rule { height: 1px; background: #C9C0A8; border: 0; width: 100%; }
 .rule-ink { background: #0E0E0E; height: 1px; }
-.rule-sanguine { background: #9B2A1F; height: 1px; }
+.rule-sanguine { background: #2A3890; height: 1px; }
 
-::selection { background: #9B2A1F; color: #F1ECDE; }
+::selection { background: #2A3890; color: #F1ECDE; }
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #C9C0A8; }
-::-webkit-scrollbar-thumb:hover { background: #5C564A; }
+::-webkit-scrollbar-thumb:hover { background: #6C6E70; }
 
 .grain::before {
   content: "";
@@ -134,17 +134,17 @@ body.no-scroll { overflow: hidden; }
   content: "";
   position: absolute;
   inset: 0;
-  background: #9B2A1F;
+  background: #2A3890;
   transform: translateY(101%);
   transition: transform .55s cubic-bezier(.7,0,.1,1);
   z-index: -1;
 }
-.sp-btn:hover { color: #F1ECDE; border-color: #9B2A1F; }
+.sp-btn:hover { color: #F1ECDE; border-color: #2A3890; }
 .sp-btn:hover::before { transform: translateY(0); }
 .sp-btn-primary {
-  background: #9B2A1F;
+  background: #2A3890;
   color: #F1ECDE;
-  border-color: #9B2A1F;
+  border-color: #2A3890;
 }
 .sp-btn-primary::before { background: #0E0E0E; }
 .sp-btn-primary:hover { color: #F1ECDE; border-color: #0E0E0E; }
@@ -172,7 +172,7 @@ body.no-scroll { overflow: hidden; }
   transition: transform .5s cubic-bezier(.7,0,.1,1);
 }
 .sp-link:hover::after { transform: scaleX(1); transform-origin: left center; }
-.sp-link:hover { color: #9B2A1F; }
+.sp-link:hover { color: #2A3890; }
 
 .wordmark {
   font-family: "Newsreader", serif;
@@ -187,7 +187,7 @@ body.no-scroll { overflow: hidden; }
   font-family: "Newsreader", serif;
   font-style: italic;
   font-weight: 500;
-  color: #9B2A1F;
+  color: #2A3890;
 }
 
 .section { position: relative; padding: clamp(4rem, 10vw, 10rem) 0; }
@@ -203,10 +203,10 @@ body.no-scroll { overflow: hidden; }
   font-weight: 500;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #5C564A;
+  color: #6C6E70;
 }
 .opus-mark .opus-num {
-  color: #9B2A1F;
+  color: #2A3890;
   font-family: "Newsreader", serif;
   font-style: italic;
   font-weight: 400;
@@ -219,7 +219,7 @@ body.no-scroll { overflow: hidden; }
   font-family: "Newsreader", serif;
   font-style: italic;
   font-weight: 300;
-  color: #9B2A1F;
+  color: #2A3890;
   font-size: 5.5em;
   line-height: 0.85;
   float: left;

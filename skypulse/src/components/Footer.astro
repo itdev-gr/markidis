@@ -1,6 +1,5 @@
 ---
 import Staff from "./Staff.astro";
-import MusicGlyph from "./MusicGlyph.astro";
 import { pick, localeUrl, type Lang } from "../i18n/strings";
 
 interface Props { lang?: Lang; }
@@ -15,9 +14,7 @@ const u = (p: string) => localeUrl(lang, p);
   <div class="container">
     <div class="sp-colophon">
       <div class="sp-colophon-brand">
-        <div class="wordmark" style="font-size:3.5rem">
-          <MusicGlyph glyph="treble" size="3.2rem" color="#9B2A1F" /> sky<b>pulse</b>
-        </div>
+        <img class="sp-colophon-logo" src="/media/logo.svg" alt="Sky Pulse" width="320" height="104" />
         <p class="display-italic sp-colophon-tag">{t.footer.tag}</p>
       </div>
 
@@ -63,8 +60,9 @@ const u = (p: string) => localeUrl(lang, p);
   @media (min-width: 900px) {
     .sp-colophon { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
   }
-  .sp-colophon-brand { display: flex; flex-direction: column; gap: 1rem; }
-  .sp-colophon-tag { font-size: 1.5rem; color: #5C564A; max-width: 22ch; }
+  .sp-colophon-brand { display: flex; flex-direction: column; gap: 1.25rem; }
+  .sp-colophon-logo { height: 4.5rem; width: auto; display: block; }
+  .sp-colophon-tag { font-size: 1.5rem; color: #6C6E70; max-width: 22ch; }
   .sp-colophon-col { display: flex; flex-direction: column; gap: 0.85rem; }
   .sp-colophon-col a, .sp-colophon-col span:not(.eyebrow) {
     color: #0E0E0E;
@@ -74,13 +72,13 @@ const u = (p: string) => localeUrl(lang, p);
     font-weight: 400;
     transition: color .3s ease;
   }
-  .sp-colophon-col a:hover { color: #9B2A1F; }
+  .sp-colophon-col a:hover { color: #2A3890; }
   .sp-colophon-foot {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
     padding-top: 2rem;
-    color: #5C564A;
+    color: #6C6E70;
   }
 </style>
