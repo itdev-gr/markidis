@@ -2,8 +2,12 @@
 import Page from "../layouts/Page.astro";
 import Overture from "../components/sections/Overture.astro";
 import Manifesto from "../components/sections/Manifesto.astro";
+import Work from "../components/sections/Work.astro";
 import Disciplines from "../components/sections/Disciplines.astro";
+import Process from "../components/sections/Process.astro";
+import Studio from "../components/sections/Studio.astro";
 import Testimonials from "../components/sections/Testimonials.astro";
+import Cta from "../components/sections/Cta.astro";
 import { pick } from "../i18n/strings";
 
 const lang = "el";
@@ -13,6 +17,10 @@ const m = pick(lang).meta.home;
 <Page lang={lang} path="/" title={m.title} description={m.description}>
   <Overture lang={lang} />
   <Manifesto lang={lang} />
+  <Work lang={lang} />
   <Disciplines lang={lang} />
+  <Process lang={lang} />
+  <Studio lang={lang} />
   <Testimonials lang={lang} />
+  <Cta lang={lang} />
 </Page>
