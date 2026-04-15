@@ -1,75 +1,18 @@
 ---
-import Base from "../../layouts/Base.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
+import Page from "../../layouts/Page.astro";
 import Overture from "../../components/sections/Overture.astro";
 import Manifesto from "../../components/sections/Manifesto.astro";
-import Work from "../../components/sections/Work.astro";
 import Disciplines from "../../components/sections/Disciplines.astro";
-import Process from "../../components/sections/Process.astro";
-import Studio from "../../components/sections/Studio.astro";
 import Testimonials from "../../components/sections/Testimonials.astro";
-import Cta from "../../components/sections/Cta.astro";
+import { pick } from "../../i18n/strings";
+
+const lang = "en";
+const m = pick(lang).meta.home;
 ---
 
-<Base title="Sky Pulse — the sound of your movement" lang="en">
-  <Header lang="en" />
-
-  <main>
-    <Overture />
-    <Manifesto />
-    <Work />
-    <Disciplines />
-    <Process />
-    <Studio />
-    <Testimonials />
-    <Cta />
-  </main>
-
-  <Footer lang="en" />
-
-  <div id="video-overlay" class="video-overlay" role="dialog" aria-modal="true">
-    <button id="video-overlay-close" aria-label="Close" class="video-overlay-close">
-      <svg width="22" height="22" viewBox="0 0 22 22"><path d="M2 2l18 18M20 2L2 20" stroke="currentColor" stroke-width="1.4"/></svg>
-    </button>
-    <div id="video-overlay-inner" class="video-overlay-inner"></div>
-  </div>
-</Base>
-
-<style>
-  .video-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: clamp(1rem, 4vw, 3rem);
-    background: rgba(14,14,14,0.92);
-    backdrop-filter: blur(20px);
-    opacity: 0;
-    pointer-events: none;
-  }
-  .video-overlay-inner {
-    width: min(1200px, 100%);
-    aspect-ratio: 16 / 9;
-    background: #0E0E0E;
-    position: relative;
-  }
-  .video-overlay-close {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    border: 1px solid #F1ECDE;
-    background: transparent;
-    color: #F1ECDE;
-    display: grid;
-    place-items: center;
-    z-index: 2;
-    transition: background .3s ease, color .3s ease;
-  }
-  .video-overlay-close:hover { background: #F1ECDE; color: #0E0E0E; }
-</style>
+<Page lang={lang} path="/" title={m.title} description={m.description}>
+  <Overture lang={lang} />
+  <Manifesto lang={lang} />
+  <Disciplines lang={lang} />
+  <Testimonials lang={lang} />
+</Page>

@@ -1,10 +1,11 @@
 ---
 import Staff from "../Staff.astro";
-const quotes = [
-  { q: "The music didn't just fit her routine. It wrote it.", a: "Head Coach · National Figure Skating Team" },
-  { q: "Every accent lands with her hoop. It feels composed to her body, not to a stopwatch.", a: "Senior Rhythmic Gymnast · Athens" },
-  { q: "Arena-ready on delivery. No post-mastering panic on competition day.", a: "Choreographer · Show Ensemble" },
-];
+import { pick, type Lang } from "../../i18n/strings";
+
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const t = pick(lang);
+const quotes = t.testimonials;
 ---
 
 <section class="section testimonials">
@@ -12,10 +13,10 @@ const quotes = [
     <Staff height={32} class="test-staff" />
 
     <div class="test-grid">
-      {quotes.map((t) => (
+      {quotes.map((q) => (
         <figure class="test-card" data-reveal>
-          <blockquote class="display-italic test-q">“{t.q}”</blockquote>
-          <figcaption><span class="mono">— {t.a}</span></figcaption>
+          <blockquote class="display-italic test-q">“{q.q}”</blockquote>
+          <figcaption><span class="mono">— {q.a}</span></figcaption>
         </figure>
       ))}
     </div>

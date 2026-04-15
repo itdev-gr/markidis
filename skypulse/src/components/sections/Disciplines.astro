@@ -1,29 +1,28 @@
 ---
 import Staff from "../Staff.astro";
-const disciplines = [
-  { name: "Figure Skating",     code: "FS", note: "ISU timing · edge-aware accents",         glyph: "♩" },
-  { name: "Rhythmic Gymnastics",code: "RG", note: "FIG apparatus · pulse beds for the toss",  glyph: "♪" },
-  { name: "Artistic Gymnastics",code: "AG", note: "Floor 1:20 · tumbling-synced stingers",    glyph: "♫" },
-  { name: "Show Choreography",  code: "SC", note: "Gala &amp; exhibition · narrative arcs",   glyph: "𝄐" },
-  { name: "Performance Sports", code: "PS", note: "Acrobatic · cheer · synchro",              glyph: "𝄋" },
-];
+import { pick, type Lang } from "../../i18n/strings";
+
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const t = pick(lang);
+const s = t.disciplines;
 ---
 
 <section class="section disciplines">
   <div class="container">
-    <h2 class="disc-lede display" data-split>Each discipline, its own grammar.</h2>
+    <h2 class="disc-lede display" data-split>{s.lede}</h2>
 
     <Staff height={48} class="disc-staff" />
 
     <div class="disc-grid">
-      {disciplines.map((d, i) => (
+      {s.cards.map((d, i) => (
         <article class="disc-card" data-reveal>
           <div class="disc-head">
             <span class="opus">{d.glyph}</span>
             <span class="mono">{d.code} · № 0{i + 1}</span>
           </div>
           <h3 class="display">{d.name}</h3>
-          <p class="body-serif">{d.note}</p>
+          <p class="body-serif" set:html={d.note} />
         </article>
       ))}
     </div>
@@ -31,14 +30,12 @@ const disciplines = [
 
   <div class="marquee" data-marquee aria-hidden="true">
     <div class="marquee-inner" data-marquee-inner>
-      <span class="display-italic">Precision</span>
-      <span class="dot opus">𝄢</span>
-      <span class="display-italic">Performance</span>
-      <span class="dot opus">𝄢</span>
-      <span class="display-italic">Emotion</span>
-      <span class="dot opus">𝄢</span>
-      <span class="display-italic">ο ήχος της κίνησής σου</span>
-      <span class="dot opus">𝄢</span>
+      {s.marquee.map((phrase) => (
+        <>
+          <span class="display-italic">{phrase}</span>
+          <span class="dot opus">𝄢</span>
+        </>
+      ))}
     </div>
   </div>
 </section>

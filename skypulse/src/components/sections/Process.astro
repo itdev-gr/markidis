@@ -1,23 +1,22 @@
 ---
 import Staff from "../Staff.astro";
-const process = [
-  { n: "I",   t: "Brief",  d: "Athlete, coach, program, story, references. We listen for the silence before the music." },
-  { n: "II",  t: "Sketch", d: "Themes, motifs, tempo map charted to choreography. A score before a sound." },
-  { n: "III", t: "Record", d: "Session musicians, strings, percussion, vocalists — or all-in-the-box. Whatever the piece requires." },
-  { n: "IV",  t: "Mix",    d: "Arena-ready. Translated for live PA, broadcast compression, and the rink's reverb." },
-  { n: "V",   t: "Master", d: "ISU/FIG compliant, LUFS-tuned, deliverable in minutes before a deadline." },
-];
+import { pick, type Lang } from "../../i18n/strings";
+
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const t = pick(lang);
+const s = t.process;
 ---
 
 <section id="process" class="section process">
   <div class="container">
-    <h2 class="proc-lede display" data-split>Five movements. One score.</h2>
+    <h2 class="proc-lede display" data-split>{s.lede}</h2>
     <Staff height={32} class="proc-staff" />
 
     <ol class="proc-list">
-      {process.map((p) => (
+      {s.steps.map((p) => (
         <li class="proc-step" data-reveal>
-          <span class="proc-num opus">Mvt. {p.n}.</span>
+          <span class="proc-num opus">{s.mvtLabel} {p.n}.</span>
           <div class="proc-body">
             <h3 class="display-italic">{p.t}</h3>
             <p class="body-serif">{p.d}</p>

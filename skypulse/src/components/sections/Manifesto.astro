@@ -1,5 +1,11 @@
 ---
 import Staff from "../Staff.astro";
+import { pick, type Lang } from "../../i18n/strings";
+
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const t = pick(lang);
+const s = t.manifesto;
 ---
 
 <section class="section manifesto">
@@ -9,24 +15,21 @@ import Staff from "../Staff.astro";
     <article class="manifesto-grid">
       <aside class="manifesto-gr" data-reveal>
         <p class="manifesto-gr-text body-serif dropcap">
-          Η μουσική μας δεν είναι απλώς συνοδεία — είναι <em>στρατηγικό εργαλείο απόδοσης</em>,
-          σχεδιασμένο να ενισχύει την παρουσία, να προκαλεί συναίσθημα και να μετατρέπει
-          κάθε εμφάνιση σε εμπειρία.
+          {s.gr.pre}<em>{s.gr.em}</em>{s.gr.post}
         </p>
       </aside>
 
       <blockquote class="manifesto-en">
         <p class="display-italic" data-split>
-          Our music is more than accompaniment — it is a strategic element of performance,
-          designed to enhance presence, evoke emotion, and transform every routine into an experience.
+          {s.en}
         </p>
       </blockquote>
     </article>
 
     <hr class="rule rule-sanguine" />
     <div class="manifesto-foot" data-reveal>
-      <span class="mono">— signed, the composer</span>
-      <span class="opus">№ I / IV</span>
+      <span class="mono">{s.signed}</span>
+      <span class="opus">{s.ref}</span>
     </div>
   </div>
 </section>

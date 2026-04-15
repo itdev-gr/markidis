@@ -1,5 +1,11 @@
 ---
 import Staff from "../Staff.astro";
+import { pick, type Lang } from "../../i18n/strings";
+
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const t = pick(lang);
+const s = t.studio;
 ---
 
 <section id="studio" class="section studio">
@@ -9,34 +15,25 @@ import Staff from "../Staff.astro";
     <div class="studio-grid">
       <figure class="studio-img halftone">
         <img src="/media/contact.jpg" alt="Sky Pulse studio" loading="lazy" />
-        <figcaption class="mono">Plate I. — Studio A · Athens</figcaption>
+        <figcaption class="mono">{s.caption}</figcaption>
       </figure>
 
       <div class="studio-copy">
-        <h2 class="display" data-split>
-          Every composition is individually crafted — orchestration, production, mix, master.
-        </h2>
+        <h2 class="display" data-split>{s.lede}</h2>
 
         <div class="studio-stats">
-          <div>
-            <span class="display stat-num" data-count="148">0</span>
-            <span class="eyebrow">Programs scored</span>
-          </div>
-          <div>
-            <span class="display stat-num" data-count="37">0</span>
-            <span class="eyebrow">National podiums</span>
-          </div>
-          <div>
-            <span class="display stat-num" data-count="12">0</span>
-            <span class="eyebrow">Countries</span>
-          </div>
+          {s.stats.map((n, i) => (
+            <div>
+              <span class="display stat-num" data-count={n.toString()}>0</span>
+              <span class="eyebrow">{s.statsLabels[i]}</span>
+            </div>
+          ))}
         </div>
 
         <ul class="studio-tools">
-          <li><span class="mono">DAW</span> Pro Tools · Logic Pro · Cubase</li>
-          <li><span class="mono">ORCHESTRA</span> Spitfire · VSL · Cinesamples</li>
-          <li><span class="mono">MASTER</span> iZotope Ozone · FabFilter Pro-L 2</li>
-          <li><span class="mono">DELIVERY</span> 48 kHz / 24-bit · broadcast-ready WAV</li>
+          {s.tools.map((tool) => (
+            <li><span class="mono">{tool.label}</span> {tool.value}</li>
+          ))}
         </ul>
       </div>
     </div>

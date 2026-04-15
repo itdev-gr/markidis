@@ -1,50 +1,49 @@
 ---
 import Staff from "../Staff.astro";
 import MusicGlyph from "../MusicGlyph.astro";
+import { pick, localeUrl, type Lang } from "../../i18n/strings";
 
-const videos = [
-  { id: "1176307949", thumb: "/media/thumb-1.jpg", title: "Aurora Variations", sport: "Figure Skating · Free Program", duration: "04:00", bpm: "68–112", key: "F♯ minor", year: "2026" },
-  { id: "1176307154", thumb: "/media/thumb-2.jpg", title: "Kinesis №2", sport: "Rhythmic Gymnastics · Hoop", duration: "01:30", bpm: "96–140", key: "A minor", year: "2026" },
-  { id: "1176309212", thumb: "/media/thumb-3.jpg", title: "The Silent Orbit", sport: "Artistic Gymnastics · Floor", duration: "01:20", bpm: "104–132", key: "C major", year: "2026" },
-  { id: "1176465736", thumb: "/media/thumb-4.jpg", title: "Nocturne for Blade", sport: "Figure Skating · Short Program", duration: "02:50", bpm: "72–118", key: "D minor", year: "2026" },
-];
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const t = pick(lang);
+const s = t.work;
 const movements = ["I", "II", "III", "IV"];
 ---
 
 <section id="work" class="track-wrap">
   <div class="track-header container">
     <h2 class="track-lede display" data-split>
-      Four routines. One vocabulary of movement, scored four different ways.
+      {s.lede}
     </h2>
     <Staff height={32} notes={["𝄞", "♩", "♪", "♫"]} />
-    <span class="track-hint mono" data-reveal>↓ Scroll to advance — page-turner.</span>
+    <span class="track-hint mono" data-reveal>{s.hint}</span>
   </div>
 
   <div class="track-viewport" data-track>
     <div class="track-inner" data-track-inner>
-      {videos.map((v, i) => (
-        <article class="video-tile" data-vimeo={v.id} aria-label={`Play ${v.title}`}>
+      {s.videos.map((v, i) => (
+        <article class="video-tile" data-vimeo={v.id} aria-label={`${s.playLabel} ${v.title}`}>
           <div class="tile-rule">
-            <span class="tile-mvt opus">Mvt. {movements[i]}.</span>
+            <span class="tile-mvt opus">{s.mvtLabel} {movements[i]}.</span>
             <hr class="rule rule-ink" />
-            <span class="mono">№ 0{i + 1}</span>
+            <span class="mono">{s.numLabel} 0{i + 1}</span>
           </div>
 
           <figure class="halftone">
             <img src={v.thumb} alt={v.title} loading={i < 2 ? "eager" : "lazy"} />
             <div class="tile-play">
               <svg width="22" height="22" viewBox="0 0 22 22"><path d="M6 3v16l14-8L6 3z" fill="currentColor"/></svg>
-              <span>Play</span>
+              <span>{s.playLabel}</span>
             </div>
           </figure>
 
           <div class="tile-meta">
             <h3 class="tile-title display-italic">{v.title}</h3>
             <dl class="tile-data">
-              <div><dt>Sport</dt><dd>{v.sport}</dd></div>
-              <div><dt>Runtime</dt><dd>{v.duration}</dd></div>
-              <div><dt>Tempo</dt><dd><MusicGlyph glyph="quarter" size="0.95em" color="#0E0E0E" inline /> = {v.bpm}</dd></div>
-              <div><dt>Key</dt><dd>{v.key}</dd></div>
+              <div><dt>{s.sportLabel}</dt><dd>{v.sport}</dd></div>
+              <div><dt>{s.runtimeLabel}</dt><dd>{v.duration}</dd></div>
+              <div><dt>{s.tempoLabel}</dt><dd><MusicGlyph glyph="quarter" size="0.95em" color="#0E0E0E" inline /> = {v.bpm}</dd></div>
+              <div><dt>{s.keyLabel}</dt><dd>{v.key}</dd></div>
             </dl>
           </div>
         </article>
@@ -52,8 +51,8 @@ const movements = ["I", "II", "III", "IV"];
 
       <div class="track-end">
         <Staff height={64} notes={["𝄐"]} />
-        <p class="display-italic">Fine. The next movement could be yours.</p>
-        <a class="sp-btn" href="#contact" data-magnetic="0.4">Submit a brief</a>
+        <p class="display-italic">{s.endFine}</p>
+        <a class="sp-btn" href={localeUrl(lang, "/contact")} data-magnetic="0.4">{s.endCta}</a>
       </div>
     </div>
   </div>

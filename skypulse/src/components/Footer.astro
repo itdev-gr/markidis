@@ -1,7 +1,12 @@
 ---
 import Staff from "./Staff.astro";
 import MusicGlyph from "./MusicGlyph.astro";
+import { pick, localeUrl, type Lang } from "../i18n/strings";
+
+interface Props { lang?: Lang; }
 const { lang = "el" } = Astro.props;
+const t = pick(lang);
+const u = (p: string) => localeUrl(lang, p);
 ---
 
 <footer class="sp-footer">
@@ -13,36 +18,36 @@ const { lang = "el" } = Astro.props;
         <div class="wordmark" style="font-size:3.5rem">
           <MusicGlyph glyph="treble" size="3.2rem" color="#9B2A1F" /> sky<b>pulse</b>
         </div>
-        <p class="display-italic sp-colophon-tag">— the sound of your movement.</p>
+        <p class="display-italic sp-colophon-tag">{t.footer.tag}</p>
       </div>
 
       <div class="sp-colophon-col">
-        <span class="eyebrow">Contact</span>
-        <a href="mailto:info@sky-pulse.gr">info@sky-pulse.gr</a>
-        <a href="tel:+306932669999">+30 6932 669999</a>
+        <span class="eyebrow">{t.footer.contact}</span>
+        <a href={`mailto:${t.common.email}`}>{t.common.email}</a>
+        <a href={t.common.phoneHref}>{t.common.phone}</a>
       </div>
 
       <div class="sp-colophon-col">
-        <span class="eyebrow">Index</span>
-        <a href="#work">Selected work</a>
-        <a href="#process">Process</a>
-        <a href="#studio">Studio</a>
-        <a href="#contact">Booking</a>
+        <span class="eyebrow">{t.footer.index}</span>
+        <a href={u("/work")}>{t.footer.linkWork}</a>
+        <a href={u("/process")}>{t.footer.linkProcess}</a>
+        <a href={u("/studio")}>{t.footer.linkStudio}</a>
+        <a href={u("/contact")}>{t.footer.linkBooking}</a>
       </div>
 
       <div class="sp-colophon-col">
-        <span class="eyebrow">Colophon</span>
-        <span>Set in Newsreader &amp; Geist</span>
-        <span>Athens · Greece</span>
-        <a href="/politiki-aporritou/">Privacy Policy</a>
+        <span class="eyebrow">{t.footer.colophon}</span>
+        <span>{t.footer.setIn}</span>
+        <span>{t.footer.location}</span>
+        <a href={t.footer.privacyHref}>{t.footer.privacy}</a>
       </div>
     </div>
 
     <hr class="rule rule-ink" />
     <div class="sp-colophon-foot">
-      <span class="mono">© MMXXVI · sky pulse</span>
-      <span class="mono">{lang === "el" ? "Εκ του μηδενός" : "Composed from silence"}</span>
-      <span class="mono">[37.9838 N · 23.7275 E]</span>
+      <span class="mono">{t.footer.copy}</span>
+      <span class="mono">{t.footer.composedFrom}</span>
+      <span class="mono">{t.footer.coords}</span>
     </div>
   </div>
 </footer>

@@ -1,0 +1,17 @@
+---
+import Page from "../../../layouts/Page.astro";
+import Process from "../../../components/sections/Process.astro";
+import { pick } from "../../../i18n/strings";
+
+const lang = "en";
+const m = pick(lang).meta.process;
+---
+
+<Page lang={lang} path="/process" title={m.title} description={m.description}>
+  <div class="page-top" />
+  <Process lang={lang} />
+</Page>
+
+<style>
+  .page-top { height: 6rem; }
+</style>

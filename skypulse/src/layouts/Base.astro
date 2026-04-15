@@ -1,17 +1,25 @@
 ---
 import "../styles/global.css";
+import { localeUrl, type Lang } from "../i18n/strings";
 
 interface Props {
   title?: string;
   description?: string;
-  lang?: "el" | "en";
+  lang?: Lang;
+  path?: string;
 }
 
 const {
   title = "Sky Pulse — Bespoke Music for Elite Athletes",
   description = "Sky Pulse composes custom music for figure skating, rhythmic & artistic gymnastics, and performance sports. Precision. Performance. Emotion.",
   lang = "el",
+  path = "/",
 } = Astro.props;
+
+const site = "https://www.sky-pulse.gr";
+const canonical = `${site}${localeUrl(lang, path)}`;
+const altEl = `${site}${localeUrl("el", path)}`;
+const altEn = `${site}${localeUrl("en", path)}`;
 ---
 
 <!doctype html>
@@ -21,6 +29,11 @@ const {
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#F1ECDE" />
     <meta name="description" content={description} />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="el" href={altEl} />
+    <link rel="alternate" hreflang="en" href={altEn} />
+    <link rel="alternate" hreflang="x-default" href={altEl} />
 
     <link rel="icon" type="image/svg+xml" href="/media/logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,6 +45,8 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/media/contact.jpg" />
+    <meta property="og:locale" content={lang === "el" ? "el_GR" : "en_US"} />
+    <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
 
     <title>{title}</title>

@@ -1,0 +1,17 @@
+---
+import Page from "../../layouts/Page.astro";
+import Cta from "../../components/sections/Cta.astro";
+import { pick } from "../../i18n/strings";
+
+const lang = "el";
+const m = pick(lang).meta.contact;
+---
+
+<Page lang={lang} path="/contact" title={m.title} description={m.description}>
+  <div class="page-top" />
+  <Cta lang={lang} />
+</Page>
+
+<style>
+  .page-top { height: 6rem; }
+</style>
