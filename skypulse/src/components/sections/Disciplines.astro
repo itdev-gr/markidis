@@ -1,0 +1,97 @@
+---
+import Staff from "../Staff.astro";
+const disciplines = [
+  { name: "Figure Skating",     code: "FS", note: "ISU timing · edge-aware accents",         glyph: "♩" },
+  { name: "Rhythmic Gymnastics",code: "RG", note: "FIG apparatus · pulse beds for the toss",  glyph: "♪" },
+  { name: "Artistic Gymnastics",code: "AG", note: "Floor 1:20 · tumbling-synced stingers",    glyph: "♫" },
+  { name: "Show Choreography",  code: "SC", note: "Gala &amp; exhibition · narrative arcs",   glyph: "𝄐" },
+  { name: "Performance Sports", code: "PS", note: "Acrobatic · cheer · synchro",              glyph: "𝄋" },
+];
+---
+
+<section class="section disciplines">
+  <div class="container">
+    <span class="opus-mark" data-reveal>
+      <span class="opus-num">Opus IV.</span>
+      <span>Disciplines — written to the rulebook</span>
+    </span>
+
+    <h2 class="disc-lede display" data-split>Each discipline, its own grammar.</h2>
+
+    <Staff height={48} class="disc-staff" />
+
+    <div class="disc-grid">
+      {disciplines.map((d, i) => (
+        <article class="disc-card" data-reveal>
+          <div class="disc-head">
+            <span class="opus">{d.glyph}</span>
+            <span class="mono">{d.code} · № 0{i + 1}</span>
+          </div>
+          <h3 class="display">{d.name}</h3>
+          <p class="body-serif">{d.note}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <div class="marquee" data-marquee aria-hidden="true">
+    <div class="marquee-inner" data-marquee-inner>
+      <span class="display-italic">Precision</span>
+      <span class="dot opus">𝄢</span>
+      <span class="display-italic">Performance</span>
+      <span class="dot opus">𝄢</span>
+      <span class="display-italic">Emotion</span>
+      <span class="dot opus">𝄢</span>
+      <span class="display-italic">ο ήχος της κίνησής σου</span>
+      <span class="dot opus">𝄢</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .disc-lede { font-size: clamp(2rem, 4vw, 3.6rem); margin: 1.5rem 0 1.5rem; max-width: 18ch; color: #0E0E0E; }
+  .disc-staff { margin: 1rem 0 3rem; }
+  .disc-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 1px solid #0E0E0E;
+    border-bottom: 1px solid #0E0E0E;
+  }
+  @media (min-width: 700px) { .disc-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1100px) { .disc-grid { grid-template-columns: repeat(5, 1fr); } }
+  .disc-card {
+    padding: 2.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-height: 320px;
+    border-right: 1px solid #C9C0A8;
+    transition: background .4s ease;
+  }
+  .disc-card:last-child { border-right: 0; }
+  .disc-card:hover { background: #E7DEC9; }
+  .disc-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .disc-head .opus { font-size: 1.6rem; }
+  .disc-card h3 {
+    font-size: clamp(1.4rem, 2vw, 1.9rem);
+    margin: auto 0 0;
+    color: #0E0E0E;
+  }
+  .disc-card p { color: #5C564A; font-size: 0.95rem; margin: 0; }
+
+  .marquee {
+    margin-top: 5rem;
+    overflow: hidden;
+    border-top: 1px solid #0E0E0E;
+    border-bottom: 1px solid #0E0E0E;
+    padding: 2rem 0;
+  }
+  .marquee-inner { display: flex; gap: 3rem; align-items: center; white-space: nowrap; width: max-content; }
+  .marquee-inner .display-italic {
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 1;
+    color: #0E0E0E;
+  }
+  .marquee-inner .dot { font-size: 3rem; }
+</style>
