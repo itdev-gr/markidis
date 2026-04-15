@@ -21,7 +21,11 @@ const t = {
     </nav>
 
     <div class="sp-header-meta">
-      <a class="sp-link" href={lang === "el" ? "/en" : "/"}>{t.lang}</a>
+      <div class="sp-lang" role="group" aria-label="Language">
+        <a href="/" class={`sp-lang-opt ${lang === "el" ? "is-active" : ""}`} aria-current={lang === "el" ? "true" : undefined}>GR</a>
+        <span class="sp-lang-sep" aria-hidden="true">/</span>
+        <a href="/en" class={`sp-lang-opt ${lang === "en" ? "is-active" : ""}`} aria-current={lang === "en" ? "true" : undefined}>EN</a>
+      </div>
     </div>
 
     <button id="mobileMenuToggle" class="sp-burger" aria-label="Menu">
@@ -75,6 +79,28 @@ const t = {
   }
   .sp-header-meta :global(.opus) { font-size: 1.05rem; }
   @media (min-width: 900px) { .sp-header-meta { display: flex; } }
+
+  .sp-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border: 1px solid #0E0E0E;
+    padding: 0.35rem 0.75rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .sp-lang-opt {
+    color: #0E0E0E;
+    text-decoration: none;
+    padding: 0.1rem 0.2rem;
+    transition: color .25s ease;
+  }
+  .sp-lang-opt:hover { color: #9B2A1F; }
+  .sp-lang-opt.is-active { color: #F1ECDE; background: #9B2A1F; }
+  .sp-lang-sep { color: #C9C0A8; }
 
   .sp-nav { display: none; justify-content: center; gap: 3rem; }
   @media (min-width: 900px) { .sp-nav { display: flex; } }
