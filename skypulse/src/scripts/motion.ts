@@ -420,7 +420,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initWaveform();
   initPulseGrid();
   initHeroTimeline();
-  initPortfolioTrack();
+  // initPortfolioTrack(); // replaced with static 2×2 grid
   initVideoTiles();
   initCounters();
   initMarquee();
