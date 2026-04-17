@@ -107,6 +107,22 @@ body.no-scroll { overflow: hidden; }
 
 /* custom cursor removed — native cursor restored */
 
+.sp-glow {
+  position: relative;
+  overflow: hidden;
+}
+.sp-glow::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 70%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(139,107,175,0.10) 0%, rgba(139,107,175,0.04) 40%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .reveal-char { display: inline-block; transform: translateY(110%) rotate(2deg); opacity: 0; will-change: transform, opacity; }
 .reveal-clip { overflow: hidden; display: inline-block; line-height: inherit; }
 
