@@ -95,7 +95,7 @@ const home = u("/");
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    border: 1px solid #0E0E0E;
+    border: 1px solid #1A1A2E;
     padding: 0.35rem 0.75rem;
     font-family: "JetBrains Mono", monospace;
     font-size: 0.85rem;
@@ -104,14 +104,14 @@ const home = u("/");
     text-transform: uppercase;
   }
   .sp-lang-opt {
-    color: #0E0E0E;
+    color: #1A1A2E;
     text-decoration: none;
     padding: 0.1rem 0.2rem;
     transition: color .25s ease;
   }
-  .sp-lang-opt:hover { color: #0E0E0E; }
-  .sp-lang-opt.is-active { color: #F1ECDE; background: #0E0E0E; }
-  .sp-lang-sep { color: #C9C0A8; }
+  .sp-lang-opt:hover { color: #8B6BAF; }
+  .sp-lang-opt.is-active { color: #FFFFFF; background: #8B6BAF; }
+  .sp-lang-sep { color: #E0D8EC; }
 
   .sp-nav { display: none; justify-content: center; gap: 3rem; }
   @media (min-width: 900px) { .sp-nav { display: flex; } }
@@ -130,13 +130,13 @@ const home = u("/");
     border: 0;
     padding: 0;
   }
-  .sp-burger span { display: block; width: 24px; height: 1px; background: #0E0E0E; }
+  .sp-burger span { display: block; width: 24px; height: 1px; background: #1A1A2E; }
   .sp-burger span:nth-child(2) { width: 16px; }
   @media (min-width: 900px) { .sp-burger { display: none; } }
 
   .sp-mobile {
     position: fixed; inset: 0;
-    background: #F1ECDE;
+    background: #FFFFFF;
     z-index: 99;
     display: none;
     flex-direction: column;
@@ -150,7 +150,7 @@ const home = u("/");
     font-style: italic;
     font-weight: 300;
     font-size: clamp(2.2rem, 9vw, 4.5rem);
-    color: #0E0E0E;
+    color: #1A1A2E;
     text-decoration: none;
     letter-spacing: -0.02em;
   }
@@ -163,15 +163,15 @@ const home = u("/");
     letter-spacing: 0.2em;
     text-transform: uppercase;
   }
-  .sp-mobile-foot a { color: #6C6E70; text-decoration: none; }
+  .sp-mobile-foot a { color: #8E8E9F; text-decoration: none; }
   .sp-mobile-lang {
     display: inline-flex;
     gap: 0.5rem;
     padding-top: 0.5rem;
-    color: #C9C0A8;
+    color: #E0D8EC;
   }
-  .sp-mobile-lang a { color: #0E0E0E; }
-  .sp-mobile-lang a.is-active { color: #0E0E0E; }
+  .sp-mobile-lang a { color: #1A1A2E; }
+  .sp-mobile-lang a.is-active { color: #8B6BAF; }
 </style>
 
 <script is:inline>

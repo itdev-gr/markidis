@@ -47,7 +47,7 @@ const { lang, path, title, description } = Astro.props;
   .video-overlay-inner {
     width: min(1200px, 100%);
     aspect-ratio: 16 / 9;
-    background: #0E0E0E;
+    background: #1A1A2E;
     position: relative;
   }
   .video-overlay-close {
@@ -57,13 +57,13 @@ const { lang, path, title, description } = Astro.props;
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    border: 1px solid #F1ECDE;
+    border: 1px solid #FFFFFF;
     background: transparent;
-    color: #F1ECDE;
+    color: #FFFFFF;
     display: grid;
     place-items: center;
     z-index: 2;
     transition: background .3s ease, color .3s ease;
   }
-  .video-overlay-close:hover { background: #F1ECDE; color: #0E0E0E; }
+  .video-overlay-close:hover { background: #FFFFFF; color: #1A1A2E; }
 </style>

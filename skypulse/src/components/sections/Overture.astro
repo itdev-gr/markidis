@@ -26,7 +26,7 @@ const s = t.overture;
     <div class="hero-meta">
       <div>
         <span class="eyebrow">{s.tempoLabel}</span>
-        <span class="hero-meta-val"><MusicGlyph glyph="quarter" size="1.1em" color="#0E0E0E" inline /> {s.tempoValuePrefix}</span>
+        <span class="hero-meta-val"><MusicGlyph glyph="quarter" size="1.1em" color="#1A1A2E" inline /> {s.tempoValuePrefix}</span>
       </div>
       <div>
         <span class="eyebrow">{s.keyLabel}</span>
@@ -49,29 +49,36 @@ const s = t.overture;
 </section>
 
 <style>
-  .hero { padding: 11rem 0 6rem; min-height: 100vh; display: flex; align-items: center; }
+  .hero { padding: 11rem 0 6rem; min-height: 100vh; display: flex; align-items: center; position: relative; }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(139,107,175,0.06), rgba(109,207,246,0.04));
+    pointer-events: none;
+  }
   .hero-inner { display: grid; gap: 2.5rem; }
   .hero-title {
     font-size: clamp(3.4rem, 11vw, 11rem);
     margin: 0;
-    color: #0E0E0E;
+    color: #1A1A2E;
     max-width: 18ch;
   }
   .hero-staff { margin: 0.5rem 0; opacity: 0.85; }
   .hero-italic {
     font-size: clamp(1.4rem, 2.4vw, 2.2rem);
-    color: #6C6E70;
+    color: #8E8E9F;
     max-width: 36ch;
     margin: 0;
   }
-  .hero-italic em { color: #0E0E0E; font-style: italic; font-weight: 500; }
+  .hero-italic em { color: #8B6BAF; font-style: italic; font-weight: 500; }
   .hero-meta {
     display: grid;
     grid-template-columns: repeat(3, auto);
     gap: 2.5rem;
     justify-content: start;
-    border-top: 1px solid #C9C0A8;
-    border-bottom: 1px solid #C9C0A8;
+    border-top: 1px solid #E0D8EC;
+    border-bottom: 1px solid #E0D8EC;
     padding: 1.5rem 0;
   }
   .hero-meta div { display: flex; flex-direction: column; gap: 0.4rem; }
@@ -79,7 +86,7 @@ const s = t.overture;
     font-family: "Newsreader", serif;
     font-style: italic;
     font-size: 1.4rem;
-    color: #0E0E0E;
+    color: #1A1A2E;
   }
   .hero-cta {
     display: flex;

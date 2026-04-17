@@ -2,11 +2,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #F1ECDE;
-  --color-paper-deep: #E7DEC9;
-  --color-ink: #0E0E0E;
-  --color-marginalia: #6C6E70;
-  --color-hairline: #C9C0A8;
+  --color-paper: #FFFFFF;
+  --color-paper-deep: #F3EEF8;
+  --color-ink: #1A1A2E;
+  --color-marginalia: #8E8E9F;
+  --color-hairline: #E0D8EC;
 
   --font-display: "Newsreader", "Times New Roman", serif;
   --font-italic: "Newsreader", "Times New Roman", serif;
@@ -15,11 +15,11 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { background: #F1ECDE; }
+html { background: #FFFFFF; }
 body {
   margin: 0;
-  background: #F1ECDE;
-  color: #0E0E0E;
+  background: #FFFFFF;
+  color: #1A1A2E;
   font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
   font-weight: 400;
   font-size: 17px;
@@ -66,24 +66,24 @@ body.no-scroll { overflow: hidden; }
   letter-spacing: 0.32em;
   text-transform: uppercase;
   font-size: 0.72rem;
-  color: #6C6E70;
+  color: #8E8E9F;
 }
 .opus {
   font-family: "Newsreader", serif;
   font-style: italic;
   font-weight: 300;
-  color: #0E0E0E;
+  color: #8B6BAF;
 }
 
-.rule { height: 1px; background: #C9C0A8; border: 0; width: 100%; }
-.rule-ink { background: #0E0E0E; height: 1px; }
-.rule-sanguine { background: #0E0E0E; height: 1px; }
+.rule { height: 1px; background: #E0D8EC; border: 0; width: 100%; }
+.rule-ink { background: #1A1A2E; height: 1px; }
+.rule-sanguine { background: #8B6BAF; height: 1px; }
 
-::selection { background: #0E0E0E; color: #F1ECDE; }
+::selection { background: #5B3E8A; color: #FFFFFF; }
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #C9C0A8; }
-::-webkit-scrollbar-thumb:hover { background: #6C6E70; }
+::-webkit-scrollbar-thumb { background: #E0D8EC; }
+::-webkit-scrollbar-thumb:hover { background: #8E8E9F; }
 
 .grain::before {
   content: "";
@@ -121,8 +121,8 @@ body.no-scroll { overflow: hidden; }
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #0E0E0E;
-  border: 1px solid #0E0E0E;
+  color: #1A1A2E;
+  border: 1px solid #1A1A2E;
   background: transparent;
   overflow: hidden;
   transition: color .4s ease, border-color .4s ease;
@@ -133,20 +133,20 @@ body.no-scroll { overflow: hidden; }
   content: "";
   position: absolute;
   inset: 0;
-  background: #0E0E0E;
+  background: #8B6BAF;
   transform: translateY(101%);
   transition: transform .55s cubic-bezier(.7,0,.1,1);
   z-index: -1;
 }
-.sp-btn:hover { color: #F1ECDE; border-color: #0E0E0E; }
+.sp-btn:hover { color: #FFFFFF; border-color: #8B6BAF; }
 .sp-btn:hover::before { transform: translateY(0); }
 .sp-btn-primary {
-  background: #0E0E0E;
-  color: #F1ECDE;
-  border-color: #0E0E0E;
+  background: #8B6BAF;
+  color: #FFFFFF;
+  border-color: #8B6BAF;
 }
-.sp-btn-primary::before { background: #0E0E0E; }
-.sp-btn-primary:hover { color: #F1ECDE; border-color: #0E0E0E; }
+.sp-btn-primary::before { background: #5B3E8A; }
+.sp-btn-primary:hover { color: #FFFFFF; border-color: #5B3E8A; }
 
 .sp-link {
   font-family: "JetBrains Mono", monospace;
@@ -154,7 +154,7 @@ body.no-scroll { overflow: hidden; }
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #0E0E0E;
+  color: #1A1A2E;
   text-decoration: none;
   position: relative;
   padding-bottom: 2px;
@@ -171,7 +171,7 @@ body.no-scroll { overflow: hidden; }
   transition: transform .5s cubic-bezier(.7,0,.1,1);
 }
 .sp-link:hover::after { transform: scaleX(1); transform-origin: left center; }
-.sp-link:hover { color: #0E0E0E; }
+.sp-link:hover { color: #8B6BAF; }
 
 .wordmark {
   font-family: "Newsreader", serif;
@@ -180,13 +180,13 @@ body.no-scroll { overflow: hidden; }
   letter-spacing: -0.02em;
   font-size: 1.6rem;
   line-height: 1;
-  color: #0E0E0E;
+  color: #1A1A2E;
 }
 .wordmark b {
   font-family: "Newsreader", serif;
   font-style: italic;
   font-weight: 500;
-  color: #0E0E0E;
+  color: #8B6BAF;
 }
 
 .section { position: relative; padding: clamp(4rem, 10vw, 10rem) 0; }
@@ -202,10 +202,10 @@ body.no-scroll { overflow: hidden; }
   font-weight: 500;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #6C6E70;
+  color: #8E8E9F;
 }
 .opus-mark .opus-num {
-  color: #0E0E0E;
+  color: #8B6BAF;
   font-family: "Newsreader", serif;
   font-style: italic;
   font-weight: 400;
@@ -218,7 +218,7 @@ body.no-scroll { overflow: hidden; }
   font-family: "Newsreader", serif;
   font-style: italic;
   font-weight: 300;
-  color: #0E0E0E;
+  color: #8B6BAF;
   font-size: 5.5em;
   line-height: 0.85;
   float: left;
