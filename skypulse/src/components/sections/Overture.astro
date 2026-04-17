@@ -10,6 +10,8 @@ const s = t.overture;
 ---
 
 <section class="hero section">
+  <canvas id="hero-aurora" class="hero-aurora"></canvas>
+
   <div class="container hero-inner">
     <h1 class="hero-title display" data-split>
       {s.title}
@@ -48,16 +50,138 @@ const s = t.overture;
   </div>
 </section>
 
+<script>
+  import { gsap } from "gsap";
+
+  function initHeroAurora() {
+    const canvas = document.getElementById("hero-aurora") as HTMLCanvasElement | null;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let w = 0, h = 0;
+
+    function resize() {
+      const hero = canvas!.closest(".hero") as HTMLElement;
+      w = hero.offsetWidth;
+      h = hero.offsetHeight;
+      canvas!.width = w * dpr;
+      canvas!.height = h * dpr;
+      canvas!.style.width = w + "px";
+      canvas!.style.height = h + "px";
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    const orbs = [
+      { x: 0.15, y: 0.2,  r: 0.38, color: [91, 62, 138],  alpha: 0.12 },
+      { x: 0.75, y: 0.35, r: 0.45, color: [139, 107, 175], alpha: 0.09 },
+      { x: 0.5,  y: 0.8,  r: 0.35, color: [196, 166, 224], alpha: 0.07 },
+      { x: 0.85, y: 0.75, r: 0.28, color: [139, 107, 175], alpha: 0.10 },
+    ];
+
+    const state = orbs.map(o => ({
+      x: o.x * w,
+      y: o.y * h,
+      r: o.r * Math.max(w, h),
+      alpha: o.alpha,
+      baseX: o.x,
+      baseY: o.y,
+      baseR: o.r,
+      color: o.color,
+    }));
+
+    // GSAP breathing timelines — each orb drifts and pulses independently
+    state.forEach((s, i) => {
+      const dur = 6 + i * 2.5;
+      const drift = 0.08 + i * 0.03;
+
+      // horizontal drift
+      gsap.to(s, {
+        x: `+=${w * drift}`,
+        duration: dur,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+
+      // vertical drift
+      gsap.to(s, {
+        y: `+=${h * drift * 0.6}`,
+        duration: dur * 1.3,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay: i * 0.8,
+      });
+
+      // pulse (scale breathing)
+      gsap.to(s, {
+        r: s.r * (1.15 + i * 0.05),
+        duration: dur * 0.7,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay: i * 0.5,
+      });
+
+      // alpha breathing
+      gsap.to(s, {
+        alpha: s.alpha * (1.4 + i * 0.15),
+        duration: dur * 0.5,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay: i * 1.2,
+      });
+    });
+
+    function draw() {
+      ctx!.clearRect(0, 0, w, h);
+      for (const s of state) {
+        const grad = ctx!.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r);
+        grad.addColorStop(0, `rgba(${s.color[0]},${s.color[1]},${s.color[2]},${s.alpha})`);
+        grad.addColorStop(0.5, `rgba(${s.color[0]},${s.color[1]},${s.color[2]},${s.alpha * 0.4})`);
+        grad.addColorStop(1, `rgba(${s.color[0]},${s.color[1]},${s.color[2]},0)`);
+        ctx!.fillStyle = grad;
+        ctx!.beginPath();
+        ctx!.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx!.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  document.addEventListener("DOMContentLoaded", initHeroAurora);
+</script>
+
 <style>
-  .hero { padding: 11rem 0 6rem; min-height: 100vh; display: flex; align-items: center; position: relative; }
-  .hero::before {
-    content: "";
+  .hero {
+    padding: 11rem 0 6rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-aurora {
     position: absolute;
     inset: 0;
-    background: transparent;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
+    z-index: 0;
   }
-  .hero-inner { display: grid; gap: 2.5rem; }
+  .hero-inner {
+    display: grid;
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
   .hero-title {
     font-size: clamp(3.4rem, 11vw, 11rem);
     margin: 0;
@@ -93,5 +217,9 @@ const s = t.overture;
     flex-wrap: wrap;
     align-items: center;
     gap: 2rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-aurora { display: none; }
   }
 </style>
