@@ -90,6 +90,7 @@ export const strings = {
           bpm: "68–112",
           key: "Φα# ελάσσονα",
           year: "2026",
+          desc: "Μια σύνθεση που ακολουθεί τις καμπύλες του πάγου — από τα αργά cantabile μέχρι τα εκρηκτικά φινάλε. Γραμμένη για να αναδεικνύει κάθε στροφή και κάθε άλμα.",
         },
         {
           id: "1176307154",
@@ -100,6 +101,7 @@ export const strings = {
           bpm: "96–140",
           key: "Λα ελάσσονα",
           year: "2026",
+          desc: "Ρυθμική ακρίβεια σε κάθε χτύπο. Η μουσική ανοίγει χώρο για το στεφάνι — κάθε πέταγμα, κάθε υποδοχή, σαν ενορχηστρωμένη σιωπή.",
         },
         {
           id: "1176309212",
@@ -110,6 +112,7 @@ export const strings = {
           bpm: "104–132",
           key: "Ντο μείζονα",
           year: "2026",
+          desc: "80 δευτερόλεπτα καθαρής ενέργειας. Κάθε tumbling pass συγχρονίζεται με ένα stinger — η σιωπή μεταξύ τους είναι εξίσου σημαντική.",
         },
         {
           id: "1176465736",
@@ -120,6 +123,7 @@ export const strings = {
           bpm: "72–118",
           key: "Ρε ελάσσονα",
           year: "2026",
+          desc: "Ένα νυχτερινό κομμάτι για λεπίδα και πάγο. Ξεκινά σε pianissimo, χτίζει αργά, και εκρήγνυται στο τελικό spin. Σκοτεινό, κινηματογραφικό, αθλητικό.",
         },
       ],
     },
@@ -285,10 +289,10 @@ export const strings = {
       keyLabel: "Key",
       playLabel: "Play",
       videos: [
-        { id: "1176307949", thumb: "/media/thumb-1.jpg", title: "Aurora Variations",  sport: "Figure Skating · Free Program",        duration: "04:00", bpm: "68–112",  key: "F♯ minor", year: "2026" },
-        { id: "1176307154", thumb: "/media/thumb-2.jpg", title: "Kinesis №2",         sport: "Rhythmic Gymnastics · Hoop",             duration: "01:30", bpm: "96–140",  key: "A minor",  year: "2026" },
-        { id: "1176309212", thumb: "/media/thumb-3.jpg", title: "The Silent Orbit",   sport: "Artistic Gymnastics · Floor",            duration: "01:20", bpm: "104–132", key: "C major",  year: "2026" },
-        { id: "1176465736", thumb: "/media/thumb-4.jpg", title: "Nocturne for Blade", sport: "Figure Skating · Short Program",         duration: "02:50", bpm: "72–118",  key: "D minor",  year: "2026" },
+        { id: "1176307949", thumb: "/media/thumb-1.jpg", title: "Aurora Variations",  sport: "Figure Skating · Free Program",   duration: "04:00", bpm: "68–112",  key: "F♯ minor", year: "2026", desc: "A composition that follows the curves of the ice — from slow cantabile to explosive finales. Written to elevate every turn and every jump." },
+        { id: "1176307154", thumb: "/media/thumb-2.jpg", title: "Kinesis №2",         sport: "Rhythmic Gymnastics · Hoop",      duration: "01:30", bpm: "96–140",  key: "A minor",  year: "2026", desc: "Rhythmic precision in every beat. The music opens space for the hoop — every toss, every catch, like orchestrated silence." },
+        { id: "1176309212", thumb: "/media/thumb-3.jpg", title: "The Silent Orbit",   sport: "Artistic Gymnastics · Floor",     duration: "01:20", bpm: "104–132", key: "C major",  year: "2026", desc: "80 seconds of pure energy. Every tumbling pass is synced with a stinger — the silence between them matters just as much." },
+        { id: "1176465736", thumb: "/media/thumb-4.jpg", title: "Nocturne for Blade", sport: "Figure Skating · Short Program",  duration: "02:50", bpm: "72–118",  key: "D minor",  year: "2026", desc: "A nocturne for blade and ice. Starts in pianissimo, builds slowly, and erupts in the final spin. Dark, cinematic, athletic." },
       ],
     },
     disciplines: {

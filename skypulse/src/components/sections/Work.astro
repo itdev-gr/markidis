@@ -17,31 +17,25 @@ const movements = ["I", "II", "III", "IV"];
     </h2>
     <Staff height={32} notes={["𝄞", "♩", "♪", "♫"]} />
 
-    <div class="work-grid">
+    <div class="work-list">
       {s.videos.map((v, i) => (
-        <article class="video-tile" data-vimeo={v.id} aria-label={`${s.playLabel} ${v.title}`}>
-          <div class="tile-rule">
-            <span class="tile-mvt opus">{s.mvtLabel} {movements[i]}.</span>
-            <hr class="rule rule-ink" />
-            <span class="mono">{s.numLabel} 0{i + 1}</span>
+        <article class={`work-item ${i % 2 === 1 ? "work-item--reverse" : ""}`} data-reveal>
+          <div class="work-item-video" data-vimeo={v.id}>
+            <figure class="halftone">
+              <img src={v.thumb} alt={v.title} loading={i < 2 ? "eager" : "lazy"} />
+              <div class="tile-play">
+                <svg width="22" height="22" viewBox="0 0 22 22"><path d="M6 3v16l14-8L6 3z" fill="currentColor"/></svg>
+                <span>{s.playLabel}</span>
+              </div>
+            </figure>
           </div>
 
-          <figure class="halftone">
-            <img src={v.thumb} alt={v.title} loading={i < 2 ? "eager" : "lazy"} />
-            <div class="tile-play">
-              <svg width="22" height="22" viewBox="0 0 22 22"><path d="M6 3v16l14-8L6 3z" fill="currentColor"/></svg>
-              <span>{s.playLabel}</span>
-            </div>
-          </figure>
-
-          <div class="tile-meta">
-            <h3 class="tile-title display-italic">{v.title}</h3>
-            <dl class="tile-data">
-              <div><dt>{s.sportLabel}</dt><dd>{v.sport}</dd></div>
-              <div><dt>{s.runtimeLabel}</dt><dd>{v.duration}</dd></div>
-              <div><dt>{s.tempoLabel}</dt><dd><MusicGlyph glyph="quarter" size="0.95em" color="#0E0E0E" inline /> = {v.bpm}</dd></div>
-              <div><dt>{s.keyLabel}</dt><dd>{v.key}</dd></div>
-            </dl>
+          <div class="work-item-text">
+            <span class="mono work-item-meta">
+              {s.mvtLabel} {movements[i]}. — {v.sport} — {v.duration} — <MusicGlyph glyph="quarter" size="0.9em" color="#0E0E0E" inline /> = {v.bpm}
+            </span>
+            <h3 class="display-italic work-item-title">{v.title}</h3>
+            <p class="body-serif work-item-desc">{v.desc}</p>
           </div>
         </article>
       ))}
@@ -64,34 +58,39 @@ const movements = ["I", "II", "III", "IV"];
     color: #0E0E0E;
   }
 
-  .work-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    margin-top: 3rem;
-  }
-  @media (min-width: 700px) {
-    .work-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  .video-tile {
-    width: 100%;
+  .work-list {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 5rem;
+    margin-top: 4rem;
   }
 
-  .tile-rule {
+  .work-item {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
     align-items: center;
-    gap: 1rem;
   }
-  .tile-mvt { font-size: 1.1rem; }
+  @media (min-width: 800px) {
+    .work-item { grid-template-columns: 1.2fr 1fr; gap: 4rem; }
+    .work-item--reverse { grid-template-columns: 1fr 1.2fr; }
+    .work-item--reverse .work-item-video { order: 2; }
+    .work-item--reverse .work-item-text { order: 1; }
+  }
 
-  .video-tile figure { position: relative; margin: 0; aspect-ratio: 16 / 10; overflow: hidden; }
-  .video-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-  .video-tile:hover img { transform: scale(1.04); }
+  .work-item-video { position: relative; }
+  .work-item-video figure {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+  .work-item-video img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+  }
+  .work-item-video:hover img { transform: scale(1.04); }
 
   .tile-play {
     position: absolute;
@@ -110,39 +109,29 @@ const movements = ["I", "II", "III", "IV"];
     text-transform: uppercase;
   }
 
-  .tile-meta { display: flex; flex-direction: column; gap: 0.6rem; }
-  .tile-title {
-    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  .work-item-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .work-item-meta { color: #6C6E70; line-height: 1.6; }
+  .work-item-title {
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
     margin: 0;
     color: #0E0E0E;
   }
-  .tile-data {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.4rem 1.25rem;
-    margin: 0.3rem 0 0;
-  }
-  @media (min-width: 700px) {
-    .tile-data { grid-template-columns: repeat(4, 1fr); }
-  }
-  .tile-data div { display: flex; flex-direction: column; gap: 0.15rem; }
-  .tile-data dt {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
+  .work-item-desc {
     color: #6C6E70;
+    max-width: 42ch;
     margin: 0;
   }
-  .tile-data dd { margin: 0; font-size: 0.95rem; color: #0E0E0E; }
 
   .work-end {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     max-width: 520px;
-    margin-top: 4rem;
+    margin-top: 5rem;
     padding-top: 3rem;
     border-top: 1px solid #C9C0A8;
   }
