@@ -263,6 +263,7 @@ body.no-scroll { overflow: hidden; }
   --margin: 80px;
   --gutter: 24px;
   --container-elysse: 1320px;
+  --nav-h: 96px;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
 

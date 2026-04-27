@@ -6,7 +6,7 @@ interface Props { lang?: Lang; }
 const { lang = "el" } = Astro.props;
 const s = pick(lang).overture;
 ---
-<section data-section="hero" class="relative z-10 min-h-screen flex flex-col justify-center page-x pb-24" aria-label="Intro">
+<section data-section="hero" class="relative z-10 min-h-screen flex flex-col justify-center page-x pb-24" style="padding-top: calc(var(--nav-h) + 2rem);" aria-label="Intro">
   <p class="eyebrow-mono mb-8">Sky Pulse · Athens · {lang === "el" ? "από το 2020" : "since 2020"}</p>
 
   <SplitHeadline text={s.title} class="display-xl" />
