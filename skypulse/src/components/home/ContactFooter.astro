@@ -1,0 +1,58 @@
+---
+import { pick, type Lang } from "../../i18n/strings";
+
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const t = pick(lang);
+const cta = t.cta;
+const c = t.common;
+const f = t.footer;
+const eyebrow = lang === "el" ? "VII · Πες ένα γεια" : "VII · Say hello";
+const titleWords = cta.title.split(/\s+/);
+const lastWord = titleWords.pop() ?? "";
+const firstLine = titleWords.join(" ");
+---
+<section data-section="contact-footer" id="contact" class="relative z-10 min-h-[90vh] page-x pt-32 pb-12 overflow-hidden" aria-label="Contact">
+
+  <p class="eyebrow-mono mb-6">{eyebrow}</p>
+
+  <h2 class="font-display tracking-[-0.025em] leading-[1.0]" style="font-size: clamp(48px, 7.5vw, 112px);" data-contact-headline>
+    <span class="inline-block">{firstLine}</span><br/>
+    <span class="inline-block"><span class="serif-italic">{lastWord}</span></span>
+  </h2>
+
+  <p class="mt-8 max-w-[50ch] text-[#8E8E9F] body-serif">{cta.sub}</p>
+
+  <div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl">
+    <div>
+      <p class="eyebrow-mono mb-3">{lang === "el" ? "Στούντιο" : "Studio"}</p>
+      <p>{c.address}</p>
+      <p class="text-[#8E8E9F]">{f.coords}</p>
+    </div>
+    <div>
+      <p class="eyebrow-mono mb-3">{lang === "el" ? "Επικοινωνία" : "Talk to us"}</p>
+      <p><a href={`mailto:${c.email}`} class="hover:text-[#8B6BAF] transition-colors">{c.email}</a></p>
+      <p><a href={c.phoneHref} class="hover:text-[#8B6BAF] transition-colors">{c.phone}</a></p>
+    </div>
+    <div>
+      <p class="eyebrow-mono mb-3">{lang === "el" ? "Ώρες" : "Hours"}</p>
+      <p>{cta.hoursValue}</p>
+      <p class="text-[#8E8E9F]">{cta.responseLabel}: {cta.responseValue}</p>
+    </div>
+  </div>
+
+  <div class="mt-32 overflow-hidden" aria-hidden="true">
+    <div data-footer-marquee class="whitespace-nowrap will-change-transform font-display tracking-[-0.03em] opacity-30" style="font-size: clamp(120px, 18vw, 260px); color: #8B6BAF;">
+      <span class="inline-block pr-8">SKY PULSE</span><span class="inline-block pr-8">SKY PULSE</span><span class="inline-block pr-8">SKY PULSE</span><span class="inline-block pr-8">SKY PULSE</span>
+    </div>
+  </div>
+
+  <div class="mt-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-8 border-t border-hairline eyebrow-mono">
+    <p>{f.copy}</p>
+    <p>{f.tag}</p>
+    <nav aria-label="Legal" class="flex gap-6">
+      <a href={f.privacyHref} class="hover:text-[#8B6BAF] transition-colors">{f.privacy}</a>
+    </nav>
+  </div>
+
+</section>

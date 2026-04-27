@@ -1,0 +1,41 @@
+---
+import { pick, type Lang } from "../../i18n/strings";
+
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const m = pick(lang).manifesto;
+
+const fullText = `${m.gr.pre}${m.gr.em}${m.gr.post}`;
+const words = fullText.split(/(\s+)/);
+const eyebrow = lang === "el" ? "II · Το μανιφέστο μας" : "II · Our manifesto";
+---
+<section
+  data-section="manifesto"
+  data-manifesto-wrap
+  class="invert-on-pin relative z-10 overflow-hidden bg-[#FFFFFF] text-[#1A1A2E]"
+  aria-label="Manifesto"
+>
+  <div class="h-screen flex items-center page-x">
+    <div class="max-w-full md:max-w-[58ch] relative z-10">
+      <p class="eyebrow-mono mb-8">{eyebrow}</p>
+      <p class="font-display tracking-[-0.015em] leading-[1.12]" style="font-size: clamp(28px, 3.6vw, 56px);">
+        {words.map((w) =>
+          /^\s+$/.test(w) ? w : <span data-mword>{w}</span>
+        )}
+      </p>
+    </div>
+
+    <svg class="pointer-events-none absolute inset-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+      <path
+        data-manifesto-wave
+        d="M0 600 C 300 520, 600 680, 900 580 S 1200 640, 1200 640"
+        stroke="currentColor"
+        stroke-width="1.5"
+        fill="none"
+        stroke-dasharray="2500"
+        stroke-dashoffset="2500"
+        opacity="0.45"
+      />
+    </svg>
+  </div>
+</section>

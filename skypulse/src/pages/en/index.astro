@@ -1,14 +1,12 @@
 ---
 import Page from "../../layouts/Page.astro";
-import Overture from "../../components/sections/Overture.astro";
-import Manifesto from "../../components/sections/Manifesto.astro";
-import Work from "../../components/sections/Work.astro";
-import Disciplines from "../../components/sections/Disciplines.astro";
-import WhySkyPulse from "../../components/sections/WhySkyPulse.astro";
-import Process from "../../components/sections/Process.astro";
-import Studio from "../../components/sections/Studio.astro";
-import Testimonials from "../../components/sections/Testimonials.astro";
-import Cta from "../../components/sections/Cta.astro";
+import Hero           from "../../components/home/Hero.astro";
+import Manifesto      from "../../components/home/Manifesto.astro";
+import FourWorlds     from "../../components/home/FourWorlds.astro";
+import CameoFeature   from "../../components/home/CameoFeature.astro";
+import Counters       from "../../components/home/Counters.astro";
+import Insights       from "../../components/home/Insights.astro";
+import ContactFooter  from "../../components/home/ContactFooter.astro";
 import { pick } from "../../i18n/strings";
 
 const lang = "en";
@@ -16,13 +14,11 @@ const m = pick(lang).meta.home;
 ---
 
 <Page lang={lang} path="/" title={m.title} description={m.description}>
-  <Overture lang={lang} />
-  <Manifesto lang={lang} />
-  <Work lang={lang} />
-  <Disciplines lang={lang} />
-  <WhySkyPulse lang={lang} />
-  <Process lang={lang} />
-  <Studio lang={lang} />
-  <Testimonials lang={lang} />
-  <Cta lang={lang} />
+  <Hero          lang={lang} />
+  <Manifesto     lang={lang} />
+  <FourWorlds    lang={lang} />
+  <CameoFeature  lang={lang} />
+  <Counters      lang={lang} />
+  <Insights      lang={lang} />
+  <ContactFooter lang={lang} />
 </Page>

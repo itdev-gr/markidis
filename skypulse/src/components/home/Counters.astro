@@ -1,0 +1,25 @@
+---
+import { pick, type Lang } from "../../i18n/strings";
+
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const s = pick(lang).studio;
+
+const captions = lang === "el"
+  ? ["Από το 2020", "Σε 4 αθλήματα", "Έδρα Αθήνα"]
+  : ["Since 2020", "Across 4 disciplines", "HQ Athens"];
+const eyebrow = lang === "el" ? "V · Με αριθμούς" : "V · By the numbers";
+---
+<section data-section="counters" class="relative z-10 min-h-screen flex flex-col justify-center page-x" aria-label="By the numbers">
+  <p class="eyebrow-mono mb-12">{eyebrow}</p>
+  <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
+    {s.stats.map((n, i) => (
+      <div>
+        <p class="eyebrow-mono mb-4">0{i + 1}</p>
+        <p class="font-display tracking-[-0.025em] leading-none whitespace-nowrap" style="font-size: clamp(56px, 7.2vw, 110px);" data-count={n}>0</p>
+        <p class="mt-6 text-[#1A1A2E]">{s.statsLabels[i]}</p>
+        <p class="eyebrow-mono mt-2 text-[#8E8E9F]">{captions[i]}</p>
+      </div>
+    ))}
+  </div>
+</section>

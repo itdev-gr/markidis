@@ -1,0 +1,20 @@
+---
+interface Props {
+  text: string;
+  emphasisWords?: string[];
+  class?: string;
+}
+const { text, emphasisWords = [], class: className = "display-xl" } = Astro.props;
+const words = text.split(/\s+/);
+const isEmphasis = (w: string) =>
+  emphasisWords.some((e) => e.toLowerCase() === w.toLowerCase().replace(/[.,;:!?]/g, ""));
+---
+<h1 class:list={[className, "inline-block"]} data-split-headline>
+  {words.map((w, i) => (
+    <span data-word-wrap>
+      <span class:list={[isEmphasis(w) && "serif-italic"]} data-word>
+        {w}{i < words.length - 1 ? " " : ""}
+      </span>
+    </span>
+  ))}
+</h1>

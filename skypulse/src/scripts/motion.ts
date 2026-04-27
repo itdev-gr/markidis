@@ -1,10 +1,11 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Observer } from "gsap/Observer";
 import { Flip } from "gsap/Flip";
 import Lenis from "lenis";
 import VimeoPlayer from "@vimeo/player";
 
-gsap.registerPlugin(ScrollTrigger, Flip);
+gsap.registerPlugin(ScrollTrigger, Observer, Flip);
 
 const reduceMotion =
   typeof window !== "undefined" &&
@@ -410,18 +411,170 @@ function initMarquee() {
 }
 
 /* ============================================================
+   HOME-PORT: SPLIT HEADLINE WORD REVEAL
+   ============================================================ */
+function initSplitHeadlines() {
+  if (reduceMotion) {
+    document.querySelectorAll<HTMLElement>("[data-word]").forEach(w => { w.style.transform = "translateY(0)"; });
+    return;
+  }
+  document.querySelectorAll<HTMLElement>("[data-split-headline]").forEach((h) => {
+    gsap.to(h.querySelectorAll("[data-word]"), {
+      y: 0,
+      duration: 1.0,
+      ease: "expo.out",
+      stagger: 0.08,
+      scrollTrigger: { trigger: h, start: "top 88%", once: true },
+    });
+  });
+}
+
+/* ============================================================
+   HOME-PORT: HERO SCROLL HINT
+   ============================================================ */
+function initHeroScrollHint() {
+  if (reduceMotion) return;
+  const hint = document.querySelector<HTMLElement>("[data-hero-scrollhint]");
+  if (!hint) return;
+  gsap.from(hint, { scaleY: 0, transformOrigin: "top center", duration: 0.8, ease: "power2.inOut", delay: 0.6 });
+}
+
+/* ============================================================
+   HOME-PORT: MANIFESTO PIN + WORD REVEAL + COLOR INVERT + SVG WAVE
+   ============================================================ */
+function initManifestoPin() {
+  const wrap = document.querySelector<HTMLElement>("[data-manifesto-wrap]");
+  if (!wrap) return;
+  if (reduceMotion) {
+    wrap.querySelectorAll<HTMLElement>("[data-mword]").forEach(w => { w.style.opacity = "1"; });
+    return;
+  }
+
+  ScrollTrigger.create({
+    trigger: wrap,
+    start: "top top",
+    end: "+=150%",
+    pin: true,
+    scrub: 0.8,
+    onEnter:     () => gsap.to(wrap, { backgroundColor: "#1A1A2E", color: "#FFFFFF", duration: 0.6 }),
+    onLeave:     () => gsap.to(wrap, { backgroundColor: "#FFFFFF", color: "#1A1A2E", duration: 0.6 }),
+    onEnterBack: () => gsap.to(wrap, { backgroundColor: "#1A1A2E", color: "#FFFFFF", duration: 0.6 }),
+    onLeaveBack: () => gsap.to(wrap, { backgroundColor: "#FFFFFF", color: "#1A1A2E", duration: 0.6 }),
+    animation: gsap.timeline()
+      .to("[data-mword]", { opacity: 1, stagger: { amount: 1 } }, 0)
+      .to("[data-manifesto-wave]", { strokeDashoffset: 0, duration: 1, ease: "none" }, 0),
+  });
+}
+
+/* ============================================================
+   HOME-PORT: FOUR WORLDS HORIZONTAL PIN
+   ============================================================ */
+function initFourWorlds() {
+  const pin = document.querySelector<HTMLElement>("[data-worlds-pin]");
+  const track = document.querySelector<HTMLElement>("[data-worlds-track]");
+  const panels = gsap.utils.toArray<HTMLElement>("[data-world-panel]");
+  const ticks = gsap.utils.toArray<HTMLElement>("[data-worlds-tick]");
+  if (!pin || !track || panels.length === 0) return;
+  if (reduceMotion || window.innerWidth < 768) {
+    if (track) { track.style.flexDirection = "column"; track.style.position = "static"; track.style.transform = "none"; }
+    pin.style.height = "auto";
+    panels.forEach((p) => { p.style.width = "100vw"; p.style.height = "100vh"; });
+    return;
+  }
+  const total = panels.length;
+  ScrollTrigger.create({
+    trigger: pin,
+    start: "top top",
+    end: () => `+=${window.innerWidth * (total - 1)}`,
+    pin: true,
+    scrub: 0.5,
+    anticipatePin: 1,
+    animation: gsap.to(track, { x: () => -window.innerWidth * (total - 1), ease: "none" }),
+    onUpdate: (self) => {
+      const idx = Math.round(self.progress * (total - 1));
+      ticks.forEach((t, i) => gsap.to(t, { scaleX: i === idx ? 2.4 : 1, backgroundColor: i === idx ? "#8B6BAF" : "#1A1A2E1f", duration: 0.4 }));
+    },
+  });
+}
+
+/* ============================================================
+   HOME-PORT: CAMEO FEATURE — scrubbed reveal
+   ============================================================ */
+function initCameoFeature() {
+  const section = document.querySelector<HTMLElement>("[data-section='cameo-feature']");
+  if (!section || reduceMotion) return;
+  ScrollTrigger.create({
+    trigger: section,
+    start: "top 70%",
+    end: "bottom 30%",
+    scrub: 0.6,
+    animation: gsap.timeline()
+      .from("[data-cameo-eyebrow]", { y: 40, opacity: 0, duration: 1 }, 0)
+      .from("[data-cameo-title]",   { y: 60, opacity: 0, duration: 1 }, 0.2)
+      .from("[data-cameo-body]",    { y: 30, opacity: 0, duration: 1 }, 0.4)
+      .from("[data-cameo-cta]",     { y: 30, opacity: 0, duration: 1 }, 0.6),
+  });
+}
+
+/* ============================================================
+   HOME-PORT: INSIGHTS DRAG-SCROLL
+   ============================================================ */
+function initInsightsDrag() {
+  const track = document.querySelector<HTMLElement>("[data-insights-track]");
+  if (!track) return;
+  let dragging = false, startX = 0, startScroll = 0;
+  Observer.create({
+    target: track,
+    type: "pointer,touch",
+    onPress: (self) => {
+      dragging = true; startX = self.x ?? 0; startScroll = track.scrollLeft;
+      track.style.cursor = "grabbing";
+    },
+    onDrag: (self) => {
+      if (!dragging) return;
+      track.scrollLeft = startScroll - ((self.x ?? 0) - startX);
+    },
+    onRelease: () => { dragging = false; track.style.cursor = "grab"; },
+  });
+}
+
+/* ============================================================
+   HOME-PORT: CONTACT FOOTER MARQUEE + HEADLINE
+   ============================================================ */
+function initContactFooter() {
+  const section = document.querySelector<HTMLElement>("[data-section='contact-footer']");
+  if (!section) return;
+  if (!reduceMotion) {
+    gsap.from("[data-contact-headline] span", {
+      y: "100%", opacity: 0, stagger: 0.08, duration: 0.9, ease: "expo.out",
+      scrollTrigger: { trigger: section, start: "top 70%", once: true },
+    });
+  }
+  const marquee = section.querySelector<HTMLElement>("[data-footer-marquee]");
+  if (marquee && !reduceMotion) {
+    gsap.to(marquee, { xPercent: -50, duration: 30, ease: "none", repeat: -1 });
+  }
+}
+
+/* ============================================================
    BOOT
    ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
   initLenis();
-  // initCursor(); // disabled — use native cursor
   initMagnetic();
   initReveals();
   initWaveform();
   initPulseGrid();
   initHeroTimeline();
-  // initPortfolioTrack(); // replaced with static 2×2 grid
   initVideoTiles();
   initCounters();
   initMarquee();
+  // Home-port additions
+  initSplitHeadlines();
+  initHeroScrollHint();
+  initManifestoPin();
+  initFourWorlds();
+  initCameoFeature();
+  initInsightsDrag();
+  initContactFooter();
 });

@@ -1,0 +1,22 @@
+---
+import SplitHeadline from "./SplitHeadline.astro";
+import { pick, type Lang } from "../../i18n/strings";
+
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const s = pick(lang).overture;
+---
+<section data-section="hero" class="relative z-10 min-h-screen flex flex-col justify-center page-x pb-24" aria-label="Intro">
+  <p class="eyebrow-mono mb-8">Sky Pulse · Athens · {lang === "el" ? "από το 2020" : "since 2020"}</p>
+
+  <SplitHeadline text={s.title} class="display-xl" />
+
+  <p class="display-sm mt-10 max-w-[40ch]">
+    {s.italic.pre}<span class="serif-italic">{s.italic.em}</span>{s.italic.post}
+  </p>
+
+  <div class="absolute bottom-10 page-pin-r flex items-center gap-4 text-[#8E8E9F] eyebrow-mono">
+    <span>{lang === "el" ? "Κύλισε" : "Scroll"}</span>
+    <span class="block h-14 w-px origin-top bg-[#1A1A2E]" data-hero-scrollhint></span>
+  </div>
+</section>

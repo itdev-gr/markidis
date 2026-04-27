@@ -31,3 +31,13 @@ yarn-error.log*
 # screenshots (WIP proofs)
 sp-*.png
 sp-*.jpeg
+
+# local reference / scratch (not for repo)
+_elysse-ref/
+docs/
+heartbeat-hero.png
+indigo-hero.png
+lang-toggle.png
+mono-hero.png
+multipage-*.png
+partitura-*.png
