@@ -456,13 +456,38 @@ function initManifestoPin() {
     end: "+=150%",
     pin: true,
     scrub: 0.8,
-    onEnter:     () => gsap.to(wrap, { backgroundColor: "#1A1A2E", color: "#FFFFFF", duration: 0.6 }),
-    onLeave:     () => gsap.to(wrap, { backgroundColor: "#FFFFFF", color: "#1A1A2E", duration: 0.6 }),
-    onEnterBack: () => gsap.to(wrap, { backgroundColor: "#1A1A2E", color: "#FFFFFF", duration: 0.6 }),
-    onLeaveBack: () => gsap.to(wrap, { backgroundColor: "#FFFFFF", color: "#1A1A2E", duration: 0.6 }),
+    onEnter:     () => { gsap.to(wrap, { backgroundColor: "#1A1A2E", color: "#FFFFFF", duration: 0.6 }); (window as any).__flow?.setPreset("manifesto", 1200); },
+    onLeave:     () => { gsap.to(wrap, { backgroundColor: "#FFFFFF", color: "#1A1A2E", duration: 0.6 }); (window as any).__flow?.setPreset("worlds", 800); },
+    onEnterBack: () => { gsap.to(wrap, { backgroundColor: "#1A1A2E", color: "#FFFFFF", duration: 0.6 }); (window as any).__flow?.setPreset("manifesto", 1200); },
+    onLeaveBack: () => { gsap.to(wrap, { backgroundColor: "#FFFFFF", color: "#1A1A2E", duration: 0.6 }); (window as any).__flow?.setPreset("hero", 800); },
     animation: gsap.timeline()
       .to("[data-mword]", { opacity: 1, stagger: { amount: 1 } }, 0)
       .to("[data-manifesto-wave]", { strokeDashoffset: 0, duration: 1, ease: "none" }, 0),
+  });
+}
+
+/* ============================================================
+   HOME-PORT: PARTICLE-FLOW PRESET ROUTER (per-section enter/leave)
+   ============================================================ */
+function initFlowPresets() {
+  if (reduceMotion) return;
+  const map: Array<[string, string]> = [
+    ['[data-section="four-worlds"]', "worlds"],
+    ['[data-section="cameo-feature"]', "cameo"],
+    ['[data-section="counters"]',     "counters"],
+    ['[data-section="insights"]',     "insights"],
+    ['[data-section="contact-footer"]', "contact"],
+  ];
+  map.forEach(([selector, preset]) => {
+    const el = document.querySelector<HTMLElement>(selector);
+    if (!el) return;
+    ScrollTrigger.create({
+      trigger: el,
+      start: "top 60%",
+      end: "bottom 40%",
+      onEnter:     () => (window as any).__flow?.setPreset(preset, 900),
+      onEnterBack: () => (window as any).__flow?.setPreset(preset, 900),
+    });
   });
 }
 
@@ -577,4 +602,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initCameoFeature();
   initInsightsDrag();
   initContactFooter();
+  initFlowPresets();
 });

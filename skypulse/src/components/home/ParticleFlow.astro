@@ -1,0 +1,25 @@
+---
+// Mounts a fixed-position WebGL canvas that drifts a purple-tinted noise field
+// behind every section. setPreset() is called by section-init code (see motion.ts)
+// so the gradient pulse changes as the user scrolls between sections.
+---
+<div id="particle-flow-root" aria-hidden="true"></div>
+
+<script>
+  import { createParticleFlow } from "../../scripts/particleFlow";
+
+  const start = () => {
+    const host = document.getElementById("particle-flow-root");
+    if (!host) return;
+    const flow = createParticleFlow(host);
+    if (flow) {
+      (window as any).__flow = flow;
+    }
+  };
+
+  if ("requestIdleCallback" in window) {
+    (window as any).requestIdleCallback(start, { timeout: 2000 });
+  } else {
+    setTimeout(start, 600);
+  }
+</script>

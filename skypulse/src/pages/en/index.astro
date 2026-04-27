@@ -1,5 +1,6 @@
 ---
 import Page from "../../layouts/Page.astro";
+import ParticleFlow   from "../../components/home/ParticleFlow.astro";
 import Hero           from "../../components/home/Hero.astro";
 import Manifesto      from "../../components/home/Manifesto.astro";
 import FourWorlds     from "../../components/home/FourWorlds.astro";
@@ -14,6 +15,7 @@ const m = pick(lang).meta.home;
 ---
 
 <Page lang={lang} path="/" title={m.title} description={m.description}>
+  <ParticleFlow />
   <Hero          lang={lang} />
   <Manifesto     lang={lang} />
   <FourWorlds    lang={lang} />
