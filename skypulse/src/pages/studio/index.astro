@@ -1,6 +1,6 @@
 ---
 import Page from "../../layouts/Page.astro";
-import Studio from "../../components/sections/Studio.astro";
+import StudioPage from "../../components/pages/StudioPage.astro";
 import { pick } from "../../i18n/strings";
 
 const lang = "el";
@@ -8,10 +8,5 @@ const m = pick(lang).meta.studio;
 ---
 
 <Page lang={lang} path="/studio" title={m.title} description={m.description}>
-  <div class="page-top" />
-  <Studio lang={lang} />
+  <StudioPage lang={lang} />
 </Page>
-
-<style>
-  .page-top { height: 6rem; }
-</style>

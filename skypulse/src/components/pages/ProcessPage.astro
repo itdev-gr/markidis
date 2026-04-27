@@ -1,0 +1,45 @@
+---
+import { pick, localeUrl, type Lang } from "../../i18n/strings";
+
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const t = pick(lang);
+const p = t.process;
+const eyebrow = lang === "el" ? "ΟΠΟΥΣ · 02" : "OPUS · 02";
+const heading = lang === "el" ? ["Από το brief", "στο master."] : ["Brief to", "master."];
+const ctaLabel = lang === "el" ? "Στείλε brief" : "Submit a brief";
+---
+<section class="page-x" style="padding-top: calc(var(--nav-h) + 4rem); padding-bottom: 4rem;">
+  <p class="eyebrow-mono mb-6">{eyebrow}</p>
+  <h1 class="display-xl">
+    {heading[0]}<br/><span class="serif-italic">{heading[1]}</span>
+  </h1>
+  <p class="display-sm mt-10 max-w-[44ch] text-[#8E8E9F]">{p.lede}</p>
+</section>
+
+<section class="page-x" style="padding-bottom: 8rem;">
+  <ol class="list-none p-0 grid grid-cols-1 gap-y-16 md:gap-y-24">
+    {p.steps.map((step, i) => (
+      <li class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start" data-reveal>
+        <div class="md:col-span-3 flex md:block items-baseline gap-4">
+          <span class="font-display italic text-[#8B6BAF]" style="font-size: clamp(56px, 7vw, 110px); line-height: 0.9;">{step.n}</span>
+          <span class="eyebrow-mono mt-3 block">{p.mvtLabel} {step.n}</span>
+        </div>
+        <div class="md:col-span-9 md:max-w-[58ch] md:pt-6">
+          <h2 class="display-md font-display tracking-[-0.02em]">{step.t}</h2>
+          <p class="mt-6 body-serif text-[#1A1A2E]">{step.d}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+
+  <div class="mt-32 flex flex-wrap items-center gap-6 pt-12 border-t border-hairline">
+    <p class="body-serif text-[#8E8E9F] max-w-[40ch]">
+      {lang === "el" ? "Έτοιμος για το επόμενο πρόγραμμά σου;" : "Ready to start the next composition?"}
+    </p>
+    <a class="sp-btn sp-btn-primary" href={localeUrl(lang, "/contact")} data-magnetic="0.35">
+      <span>{ctaLabel}</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.4"/></svg>
+    </a>
+  </div>
+</section>

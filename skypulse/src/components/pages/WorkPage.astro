@@ -1,0 +1,48 @@
+---
+import { pick, type Lang } from "../../i18n/strings";
+
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const t = pick(lang);
+const v = t.work.videos;
+const eyebrow = lang === "el" ? "ΟΠΟΥΣ · 01" : "OPUS · 01";
+const heading = lang === "el" ? ["Επιλεγμένα", "έργα."] : ["Selected", "work."];
+const movement = lang === "el" ? "Κίνηση" : "Movement";
+---
+<section class="page-x" style="padding-top: calc(var(--nav-h) + 4rem); padding-bottom: 4rem;">
+  <p class="eyebrow-mono mb-6">{eyebrow}</p>
+  <h1 class="display-xl">
+    {heading[0]}<br/><span class="serif-italic">{heading[1]}</span>
+  </h1>
+  <p class="display-sm mt-10 max-w-[44ch] text-[#8E8E9F]">{t.work.lede}</p>
+</section>
+
+<section class="page-x" style="padding-bottom: 8rem;">
+  <ol class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-24 list-none p-0">
+    {v.map((video, i) => (
+      <li class={`group ${i % 2 === 1 ? 'md:mt-32' : ''}`} data-reveal>
+        <button
+          type="button"
+          class="video-tile relative block w-full aspect-video overflow-hidden bg-[#F3EEF8] halftone cursor-pointer"
+          data-vimeo={video.id}
+          aria-label={`Play: ${video.title}`}
+        >
+          <img src={video.thumb} alt={video.title} class="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]" loading={i < 2 ? "eager" : "lazy"} />
+          <span class="absolute inset-0 grid place-items-center">
+            <span class="inline-flex items-center justify-center w-20 h-20 rounded-full border border-white text-white">
+              <svg width="22" height="22" viewBox="0 0 22 22"><path d="M6 3v16l14-8L6 3z" fill="currentColor"/></svg>
+            </span>
+          </span>
+        </button>
+        <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 eyebrow-mono">
+          <span>{movement} {["I","II","III","IV"][i]}</span>
+          <span class="hidden sm:block h-px flex-1 bg-[#E0D8EC]"></span>
+          <span>{video.duration} · {video.bpm} bpm · {video.key}</span>
+        </div>
+        <h2 class="mt-4 font-display text-3xl md:text-4xl leading-tight">{video.title}</h2>
+        <p class="eyebrow-mono mt-2 text-[#8E8E9F]">{video.sport}</p>
+        <p class="mt-4 body-serif text-[#1A1A2E] max-w-[52ch]">{video.desc}</p>
+      </li>
+    ))}
+  </ol>
+</section>
