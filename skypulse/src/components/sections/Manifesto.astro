@@ -1,5 +1,4 @@
 ---
-import Staff from "../Staff.astro";
 import { pick, type Lang } from "../../i18n/strings";
 
 interface Props { lang?: Lang; }
@@ -10,8 +9,6 @@ const s = t.manifesto;
 
 <section class="section manifesto">
   <div class="container">
-    <Staff height={32} class="manifesto-staff-top" />
-
     <article class="manifesto-grid">
       <aside class="manifesto-gr" data-reveal>
         <p class="manifesto-gr-text body-serif dropcap">
@@ -25,17 +22,10 @@ const s = t.manifesto;
         </p>
       </blockquote>
     </article>
-
-    <hr class="rule rule-sanguine" />
-    <div class="manifesto-foot" data-reveal>
-      <span class="mono">{s.signed}</span>
-      <span class="opus">{s.ref}</span>
-    </div>
   </div>
 </section>
 
 <style>
-  .manifesto-staff-top { margin: 2.5rem 0 3.5rem; }
   .manifesto-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -54,11 +44,5 @@ const s = t.manifesto;
     margin: 0;
     color: #1A1A2E;
     line-height: 1.1;
-  }
-  .manifesto-foot {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 1.5rem;
-    color: #8E8E9F;
   }
 </style>

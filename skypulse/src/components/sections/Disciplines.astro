@@ -1,5 +1,4 @@
 ---
-import Staff from "../Staff.astro";
 import { pick, type Lang } from "../../i18n/strings";
 
 interface Props { lang?: Lang; }
@@ -11,8 +10,6 @@ const s = t.disciplines;
 <section class="section disciplines sp-glow">
   <div class="container">
     <h2 class="disc-lede display" data-split>{s.lede}</h2>
-
-    <Staff height={48} class="disc-staff" />
 
     <div class="disc-grid">
       {s.cards.map((d, i) => (
@@ -42,7 +39,6 @@ const s = t.disciplines;
 
 <style>
   .disc-lede { font-size: clamp(2rem, 4vw, 3.6rem); margin: 1.5rem 0 1.5rem; max-width: 18ch; color: #1A1A2E; }
-  .disc-staff { margin: 1rem 0 3rem; }
   .disc-grid {
     display: grid;
     grid-template-columns: 1fr;

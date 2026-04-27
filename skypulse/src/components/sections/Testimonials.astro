@@ -1,5 +1,4 @@
 ---
-import Staff from "../Staff.astro";
 import { pick, type Lang } from "../../i18n/strings";
 
 interface Props { lang?: Lang; }
@@ -10,8 +9,6 @@ const quotes = t.testimonials;
 
 <section class="section testimonials sp-glow">
   <div class="container">
-    <Staff height={32} class="test-staff" />
-
     <div class="test-grid">
       {quotes.map((q) => (
         <figure class="test-card" data-reveal>
@@ -24,7 +21,6 @@ const quotes = t.testimonials;
 </section>
 
 <style>
-  .test-staff { margin: 2rem 0 3rem; }
   .test-grid {
     display: grid;
     grid-template-columns: 1fr;

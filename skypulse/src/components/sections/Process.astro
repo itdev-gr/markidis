@@ -1,5 +1,4 @@
 ---
-import Staff from "../Staff.astro";
 import { pick, type Lang } from "../../i18n/strings";
 
 interface Props { lang?: Lang; }
@@ -11,7 +10,6 @@ const s = t.process;
 <section id="process" class="section process">
   <div class="container">
     <h2 class="proc-lede display" data-split>{s.lede}</h2>
-    <Staff height={32} class="proc-staff" />
 
     <ol class="proc-list">
       {s.steps.map((p) => (
@@ -29,7 +27,6 @@ const s = t.process;
 
 <style>
   .proc-lede { font-size: clamp(2rem, 4vw, 3.6rem); margin: 1.5rem 0; max-width: 16ch; color: #1A1A2E; }
-  .proc-staff { margin: 1rem 0 1rem; }
   .proc-list { list-style: none; padding: 0; margin: 2rem 0 0; display: flex; flex-direction: column; }
   .proc-step {
     display: grid;

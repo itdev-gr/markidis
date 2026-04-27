@@ -1,5 +1,4 @@
 ---
-import Staff from "../Staff.astro";
 import { pick, type Lang } from "../../i18n/strings";
 
 interface Props { lang?: Lang; }
@@ -10,8 +9,6 @@ const s = t.studio;
 
 <section id="studio" class="section studio">
   <div class="container">
-    <Staff height={32} class="studio-staff" />
-
     <div class="studio-grid">
       <figure class="studio-img halftone">
         <img src="/media/contact.jpg" alt="Sky Pulse studio" loading="lazy" />
@@ -41,7 +38,6 @@ const s = t.studio;
 </section>
 
 <style>
-  .studio-staff { margin: 2rem 0 3rem; }
   .studio-grid {
     display: grid;
     grid-template-columns: 1fr;
