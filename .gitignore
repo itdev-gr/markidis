@@ -35,6 +35,7 @@ sp-*.jpeg
 # local reference / scratch (not for repo)
 _elysse-ref/
 docs/
+audit/
 heartbeat-hero.png
 indigo-hero.png
 lang-toggle.png
