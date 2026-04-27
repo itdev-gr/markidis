@@ -11,10 +11,8 @@ const isEmphasis = (w: string) =>
 ---
 <h1 class:list={[className, "inline-block"]} data-split-headline>
   {words.map((w, i) => (
-    <span data-word-wrap>
-      <span class:list={[isEmphasis(w) && "serif-italic"]} data-word>
-        {w}{i < words.length - 1 ? " " : ""}
-      </span>
-    </span>
+    <>
+      <span data-word-wrap><span class:list={[isEmphasis(w) && "serif-italic"]} data-word>{w}</span></span>{i < words.length - 1 ? " " : ""}
+    </>
   ))}
 </h1>

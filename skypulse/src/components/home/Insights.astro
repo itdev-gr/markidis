@@ -31,10 +31,10 @@ const viewAll = lang === "el" ? "Δες όλα →" : "View all →";
             </span>
           </span>
         </button>
-        <div class="mt-4 flex items-center gap-3 eyebrow-mono">
-          <span>{v.sport.split("·")[0].trim()}</span>
-          <span class="h-px flex-1 bg-[#E0D8EC]"></span>
-          <span>{v.duration} · {v.bpm} bpm</span>
+        <div class="mt-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 eyebrow-mono">
+          <span class="whitespace-nowrap">{v.sport.split("·")[0].trim()}</span>
+          <span class="hidden sm:block h-px flex-1 bg-[#E0D8EC]"></span>
+          <span class="whitespace-nowrap">{v.duration} · {v.bpm} bpm</span>
         </div>
         <h3 class="mt-3 font-display text-2xl leading-tight">{v.title}</h3>
         <p class="mt-2 text-[#8E8E9F] body-serif max-w-md">{v.desc}</p>
