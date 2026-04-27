@@ -41,10 +41,10 @@ export const strings = {
       },
     },
     overture: {
-      title: "Ο ήχος της κίνησής σου.",
+      title: "Ήχος που καθορίζει την παρουσία σου.",
       italic: {
-        pre: "μουσική κατά παραγγελία, γραμμένη για",
-        em: "τον αθλητή",
+        pre: "Δημιουργούμε εξατομικευμένη μουσική για αγώνες αθλημάτων, σχεδιασμένη να αναδεικνύει ",
+        em: "την κίνηση, το συναίσθημα και την έκφραση",
         post: ".",
       },
       tempoLabel: "Tempo",
@@ -53,18 +53,18 @@ export const strings = {
       keyValue: "Ρε ελάσσονα · espressivo",
       composedLabel: "Συντίθεται σε",
       composedValue: "Αθήνα · Ελλάδα",
-      ctaScore: "Γράψε ένα πρόγραμμα",
+      ctaScore: "Δημιούργησε το signature πρόγραμμά σου",
       ctaWatch: "Δες τη partitura ↓",
     },
     manifesto: {
       gr: {
-        pre: "Η μουσική μας δεν είναι απλώς συνοδεία — είναι ",
-        em: "στρατηγικό εργαλείο απόδοσης",
+        pre: "Το Skypulse δημιουργήθηκε για να γεφυρώσει τη μουσική με την αθλητική έκφραση. Στα καλλιτεχνικά αθλήματα, η μουσική δεν είναι απλώς υπόβαθρο — είναι ",
+        em: "βασικό στοιχείο της αφήγησης",
         post:
-          ", σχεδιασμένο να ενισχύει την παρουσία, να προκαλεί συναίσθημα και να μετατρέπει κάθε εμφάνιση σε εμπειρία.",
+          ". Συνδυάζουμε τεχνική ακρίβεια με καλλιτεχνική ευαισθησία, ώστε κάθε κομμάτι να αντικατοπτρίζει τον αθλητή που το εκτελεί.",
       },
       en:
-        "Η μουσική μας είναι κάτι παραπάνω από συνοδεία — είναι στρατηγικό στοιχείο της απόδοσης, σχεδιασμένο να αναδεικνύει την παρουσία, να προκαλεί συγκίνηση και να μετατρέπει κάθε πρόγραμμα σε εμπειρία.",
+        "Στο Skypulse η μουσική δεν είναι συνοδεία — είναι ταυτότητα. Σχεδιάζουμε ήχο που ευθυγραμμίζεται με κάθε κίνηση, κάθε μετάβαση, κάθε στιγμή της εμφάνισής σου. Κάθε σύνθεση δημιουργείται για να ενισχύει την απόδοση και να αφήνει έντονη εντύπωση.",
       signed: "— υπογράφει, ο συνθέτης",
       ref: "№ I / IV",
     },
@@ -143,10 +143,10 @@ export const strings = {
       mvtLabel: "Κ.",
       steps: [
         { n: "I",   t: "Brief",         d: "Αθλητής, προπονητής, πρόγραμμα, αφήγηση, αναφορές. Ακούμε τη σιωπή πριν από τη μουσική." },
-        { n: "II",  t: "Σύλληψη",       d: "Θέματα, μοτίβα, χάρτης τέμπο πάνω στην χορογραφία. Παρτιτούρα πριν από τον πρώτο ήχο." },
+        { n: "II",  t: "Σύλληψη",       d: "Πρωτότυπη μουσική, σχεδιασμένη αποκλειστικά για εσένα. Προσαρμοσμένη στη χορογραφία, τη διάρκεια και το καλλιτεχνικό σου ύφος." },
         { n: "III", t: "Ηχογράφηση",    d: "Μουσικοί στούντιο, έγχορδα, κρουστά, φωνές — ή εξ ολοκλήρου in-the-box. Ό,τι χρειάζεται το κομμάτι." },
-        { n: "IV",  t: "Μίξη",          d: "Έτοιμη για αρένα. Μεταφρασμένη για live PA, broadcast συμπίεση και τον αντίλαλο του σταδίου." },
-        { n: "V",   t: "Mastering",     d: "Συμβατή με ISU/FIG, ρυθμισμένη σε LUFS, παραδίδεται λεπτά πριν από την προθεσμία." },
+        { n: "IV",  t: "Μίξη",          d: "Απόλυτα ομαλές μεταβάσεις, σωστή δυναμική και καθαρός ήχος. Κάθε λεπτομέρεια δουλεύεται με ακρίβεια." },
+        { n: "V",   t: "Mastering",     d: "Τελικές μίξεις προσαρμοσμένες στα standards των διοργανώσεων. Ισορροπημένος και επαγγελματικός ήχος." },
       ],
     },
     studio: {
@@ -167,7 +167,7 @@ export const strings = {
       { q: "Έτοιμη για αρένα με την παράδοση. Κανένας πανικός για remaster την ημέρα του αγώνα.",                  a: "Χορογράφος · Show Ensemble" },
     ],
     cta: {
-      title: "Γράψε το επόμενο πρόγραμμά σου.",
+      title: "Ξεκίνα τη δική σου σύνθεση.",
       sub: "Πες μας τον αθλητή, το άθλημα, την προθεσμία. Απαντάμε εντός 24 ωρών.",
       fields: {
         name: "Συνθέτης (εσύ)",
@@ -204,6 +204,15 @@ export const strings = {
       linkProcess: "Διαδικασία",
       linkStudio: "Στούντιο",
       linkBooking: "Κρατήσεις",
+    },
+    whySkyPulse: {
+      lede: "Γιατί Sky Pulse.",
+      pillars: [
+        { name: "Εξειδίκευση",            desc: "Αποκλειστική εστίαση σε αθλήματα." },
+        { name: "Καλλιτεχνική Προσέγγιση", desc: "Μεταφράζουμε την κίνηση σε ήχο." },
+        { name: "Προσωποποιημένη Εμπειρία", desc: "Κάθε αθλητής είναι μοναδικός — και η μουσική του επίσης." },
+        { name: "Υψηλή Ποιότητα Ήχου",     desc: "Παραγωγή επιπέδου studio, με προσοχή στη λεπτομέρεια." },
+      ],
     },
   },
 
@@ -249,10 +258,10 @@ export const strings = {
       },
     },
     overture: {
-      title: "The sound of your movement.",
+      title: "Sound that defines your presence.",
       italic: {
-        pre: "bespoke music, composed for",
-        em: "the athlete",
+        pre: "We compose bespoke music for athletic competitions, designed to elevate ",
+        em: "movement, emotion, and expression",
         post: ".",
       },
       tempoLabel: "Tempo",
@@ -261,18 +270,18 @@ export const strings = {
       keyValue: "D minor · espressivo",
       composedLabel: "Composed in",
       composedValue: "Athens · Greece",
-      ctaScore: "Score a routine",
+      ctaScore: "Create your signature routine",
       ctaWatch: "View the partitura ↓",
     },
     manifesto: {
       gr: {
-        pre: "Our music is more than accompaniment — it is a ",
-        em: "strategic element of performance",
+        pre: "Sky Pulse was created to bridge music with athletic expression. In aesthetic sports, music is not just a backdrop — it is ",
+        em: "a core narrative element",
         post:
-          ", designed to enhance presence, evoke emotion, and transform every routine into an experience.",
+          ". We combine technical precision with artistic sensitivity, so every piece reflects the athlete who performs it.",
       },
       en:
-        "Our music is more than accompaniment — it is a strategic element of performance, designed to enhance presence, evoke emotion, and transform every routine into an experience.",
+        "At Sky Pulse, music is not accompaniment — it is identity. We design sound that aligns with every motion, every transition, every moment of your performance. Every composition is built to amplify performance and leave a lasting impression.",
       signed: "— signed, the composer",
       ref: "№ I / IV",
     },
@@ -311,10 +320,10 @@ export const strings = {
       mvtLabel: "Mvt.",
       steps: [
         { n: "I",   t: "Brief",  d: "Athlete, coach, program, story, references. We listen for the silence before the music." },
-        { n: "II",  t: "Sketch", d: "Themes, motifs, tempo map charted to choreography. A score before a sound." },
+        { n: "II",  t: "Sketch", d: "Original music composed exclusively for you. Tailored to your choreography, runtime, and artistic style." },
         { n: "III", t: "Record", d: "Session musicians, strings, percussion, vocalists — or all-in-the-box. Whatever the piece requires." },
-        { n: "IV",  t: "Mix",    d: "Arena-ready. Translated for live PA, broadcast compression, and the rink's reverb." },
-        { n: "V",   t: "Master", d: "ISU/FIG compliant, LUFS-tuned, deliverable in minutes before a deadline." },
+        { n: "IV",  t: "Mix",    d: "Seamless transitions, balanced dynamics, and pristine sound. Every detail crafted with precision." },
+        { n: "V",   t: "Master", d: "Final mixes tuned to competition standards. Balanced, professional sound." },
       ],
     },
     studio: {
@@ -335,7 +344,7 @@ export const strings = {
       { q: "Arena-ready on delivery. No post-mastering panic on competition day.",                       a: "Choreographer · Show Ensemble" },
     ],
     cta: {
-      title: "Score your next routine.",
+      title: "Begin your composition.",
       sub: "Tell us the athlete, the sport, the deadline. We answer in 24 hours.",
       fields: {
         name:     "Composer (you)",
@@ -372,6 +381,15 @@ export const strings = {
       linkProcess: "Process",
       linkStudio: "Studio",
       linkBooking: "Booking",
+    },
+    whySkyPulse: {
+      lede: "Why Sky Pulse.",
+      pillars: [
+        { name: "Specialization",           desc: "Exclusive focus on athletic disciplines." },
+        { name: "Artistic Approach",        desc: "We translate movement into sound." },
+        { name: "Personalized Experience",  desc: "Every athlete is unique — and so is their music." },
+        { name: "High-Fidelity Sound",      desc: "Studio-grade production, with attention to detail." },
+      ],
     },
   },
 } as const;
