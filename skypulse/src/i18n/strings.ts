@@ -53,7 +53,7 @@ export const strings = {
       keyValue: "Ρε ελάσσονα · espressivo",
       composedLabel: "Συντίθεται σε",
       composedValue: "Αθήνα · Ελλάδα",
-      ctaScore: "Δημιούργησε το signature πρόγραμμά σου",
+      ctaScore: "Δημιούργησε το δικό σου signature πρόγραμμα.",
       ctaWatch: "Δες τη partitura ↓",
     },
     manifesto: {
@@ -66,7 +66,7 @@ export const strings = {
       en:
         "Στο Skypulse η μουσική δεν είναι συνοδεία — είναι ταυτότητα. Σχεδιάζουμε ήχο που ευθυγραμμίζεται με κάθε κίνηση, κάθε μετάβαση, κάθε στιγμή της εμφάνισής σου. Κάθε σύνθεση δημιουργείται για να ενισχύει την απόδοση και να αφήνει έντονη εντύπωση.",
       signed: "— υπογράφει, ο συνθέτης",
-      ref: "№ I / IV",
+      ref: "№ 01 / 07",
     },
     work: {
       lede: "Τέσσερα προγράμματα. Ένα λεξιλόγιο κίνησης, με τέσσερις διαφορετικές συνθέσεις.",
@@ -142,16 +142,16 @@ export const strings = {
       lede: "Πέντε κινήσεις. Μία σύνθεση.",
       mvtLabel: "Κ.",
       steps: [
-        { n: "I",   t: "Brief",         d: "Αθλητής, προπονητής, πρόγραμμα, αφήγηση, αναφορές. Ακούμε τη σιωπή πριν από τη μουσική." },
-        { n: "II",  t: "Σύλληψη",       d: "Πρωτότυπη μουσική, σχεδιασμένη αποκλειστικά για εσένα. Προσαρμοσμένη στη χορογραφία, τη διάρκεια και το καλλιτεχνικό σου ύφος." },
-        { n: "III", t: "Ηχογράφηση",    d: "Μουσικοί στούντιο, έγχορδα, κρουστά, φωνές — ή εξ ολοκλήρου in-the-box. Ό,τι χρειάζεται το κομμάτι." },
-        { n: "IV",  t: "Μίξη",          d: "Απόλυτα ομαλές μεταβάσεις, σωστή δυναμική και καθαρός ήχος. Κάθε λεπτομέρεια δουλεύεται με ακρίβεια." },
-        { n: "V",   t: "Mastering",     d: "Τελικές μίξεις προσαρμοσμένες στα standards των διοργανώσεων. Ισορροπημένος και επαγγελματικός ήχος." },
+        { n: "01", t: "Brief",         d: "Αθλητής, προπονητής, πρόγραμμα, αφήγηση, αναφορές. Ακούμε τη σιωπή πριν από τη μουσική." },
+        { n: "02", t: "Σύλληψη",       d: "Πρωτότυπη μουσική, σχεδιασμένη αποκλειστικά για εσένα. Προσαρμοσμένη στη χορογραφία, τη διάρκεια και το καλλιτεχνικό σου ύφος." },
+        { n: "03", t: "Ηχογράφηση",    d: "Μουσικοί στούντιο, έγχορδα, κρουστά, φωνές — ή εξ ολοκλήρου in-the-box. Ό,τι χρειάζεται το κομμάτι." },
+        { n: "04", t: "Μίξη",          d: "Απόλυτα ομαλές μεταβάσεις, σωστή δυναμική και καθαρός ήχος. Κάθε λεπτομέρεια δουλεύεται με ακρίβεια." },
+        { n: "05", t: "Mastering",     d: "Τελικές μίξεις προσαρμοσμένες στα standards των διοργανώσεων. Ισορροπημένος και επαγγελματικός ήχος." },
       ],
     },
     studio: {
       lede: "Κάθε σύνθεση φτιάχνεται ξεχωριστά — ενορχήστρωση, παραγωγή, μίξη, mastering.",
-      caption: "Πίνακας I. — Στούντιο A · Αθήνα",
+      caption: "Πίνακας 01 — Στούντιο A · Αθήνα",
       statsLabels: ["Προγράμματα", "Εθνικές διακρίσεις", "Χώρες"],
       stats: [148, 37, 12],
       tools: [
@@ -283,7 +283,7 @@ export const strings = {
       en:
         "At Sky Pulse, music is not accompaniment — it is identity. We design sound that aligns with every motion, every transition, every moment of your performance. Every composition is built to amplify performance and leave a lasting impression.",
       signed: "— signed, the composer",
-      ref: "№ I / IV",
+      ref: "№ 01 / 07",
     },
     work: {
       lede: "Four routines. One vocabulary of movement, scored four different ways.",
@@ -319,16 +319,16 @@ export const strings = {
       lede: "Five movements. One score.",
       mvtLabel: "Mvt.",
       steps: [
-        { n: "I",   t: "Brief",  d: "Athlete, coach, program, story, references. We listen for the silence before the music." },
-        { n: "II",  t: "Sketch", d: "Original music composed exclusively for you. Tailored to your choreography, runtime, and artistic style." },
-        { n: "III", t: "Record", d: "Session musicians, strings, percussion, vocalists — or all-in-the-box. Whatever the piece requires." },
-        { n: "IV",  t: "Mix",    d: "Seamless transitions, balanced dynamics, and pristine sound. Every detail crafted with precision." },
-        { n: "V",   t: "Master", d: "Final mixes tuned to competition standards. Balanced, professional sound." },
+        { n: "01", t: "Brief",  d: "Athlete, coach, program, story, references. We listen for the silence before the music." },
+        { n: "02", t: "Sketch", d: "Original music composed exclusively for you. Tailored to your choreography, runtime, and artistic style." },
+        { n: "03", t: "Record", d: "Session musicians, strings, percussion, vocalists — or all-in-the-box. Whatever the piece requires." },
+        { n: "04", t: "Mix",    d: "Seamless transitions, balanced dynamics, and pristine sound. Every detail crafted with precision." },
+        { n: "05", t: "Master", d: "Final mixes tuned to competition standards. Balanced, professional sound." },
       ],
     },
     studio: {
       lede: "Every composition is individually crafted — orchestration, production, mix, master.",
-      caption: "Plate I. — Studio A · Athens",
+      caption: "Plate 01 — Studio A · Athens",
       statsLabels: ["Programs scored", "National podiums", "Countries"],
       stats: [148, 37, 12],
       tools: [

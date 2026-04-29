@@ -1,0 +1,31 @@
+---
+import { pick, type Lang } from "../../i18n/strings";
+
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const w = pick(lang).whySkyPulse;
+const eyebrow = lang === "el" ? "05 · Γιατί Sky Pulse" : "05 · Why Sky Pulse";
+const headingWords = w.lede.replace(/\.$/, "").split(/\s+/);
+const lastWord = headingWords.pop() ?? "";
+const firstWords = headingWords.join(" ");
+---
+<section data-section="why" class="relative z-10 page-x" style="padding-top: calc(var(--nav-h) + 4rem); padding-bottom: 6rem;" aria-label="Why Sky Pulse">
+
+  <header class="mb-16 max-w-[40ch]">
+    <p class="eyebrow-mono mb-6">{eyebrow}</p>
+    <h2 class="display-md leading-[0.95]">
+      {firstWords ? `${firstWords} ` : ""}<span class="serif-italic">{lastWord}.</span>
+    </h2>
+  </header>
+
+  <ol class="list-none p-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+    {w.pillars.map((p, i) => (
+      <li class="border-t border-hairline pt-6" data-reveal>
+        <p class="eyebrow-mono text-[#8B6BAF] mb-4">0{i + 1}</p>
+        <h3 class="font-display tracking-[-0.015em] leading-[1.05]" style="font-size: clamp(22px, 2.4vw, 32px);">{p.name}</h3>
+        <p class="mt-4 body-serif text-[#1A1A2E] max-w-[28ch]">{p.desc}</p>
+      </li>
+    ))}
+  </ol>
+
+</section>

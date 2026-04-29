@@ -5,6 +5,7 @@ import Manifesto      from "../../components/home/Manifesto.astro";
 import FourWorlds     from "../../components/home/FourWorlds.astro";
 import CameoFeature   from "../../components/home/CameoFeature.astro";
 import Counters       from "../../components/home/Counters.astro";
+import WhySkyPulse    from "../../components/home/WhySkyPulse.astro";
 import Insights       from "../../components/home/Insights.astro";
 import ContactFooter  from "../../components/home/ContactFooter.astro";
 import { pick } from "../../i18n/strings";
@@ -19,6 +20,7 @@ const m = pick(lang).meta.home;
   <FourWorlds    lang={lang} />
   <CameoFeature  lang={lang} />
   <Counters      lang={lang} />
+  <WhySkyPulse   lang={lang} />
   <Insights      lang={lang} />
   <ContactFooter lang={lang} />
 </Page>

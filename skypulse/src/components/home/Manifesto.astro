@@ -7,7 +7,7 @@ const m = pick(lang).manifesto;
 
 const fullText = `${m.gr.pre}${m.gr.em}${m.gr.post}`;
 const words = fullText.split(/(\s+)/);
-const eyebrow = lang === "el" ? "II · Το μανιφέστο μας" : "II · Our manifesto";
+const eyebrow = lang === "el" ? "01 · Το μανιφέστο μας" : "01 · Our manifesto";
 ---
 <section
   data-section="manifesto"
@@ -23,6 +23,8 @@ const eyebrow = lang === "el" ? "II · Το μανιφέστο μας" : "II · 
           /^\s+$/.test(w) ? w : <span data-mword>{w}</span>
         )}
       </p>
+      <hr class="rule mt-12 mb-8 max-w-[6ch]" />
+      <p class="body-serif text-[#1A1A2E] max-w-[56ch]" data-reveal>{m.en}</p>
     </div>
 
     <svg class="pointer-events-none absolute inset-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">

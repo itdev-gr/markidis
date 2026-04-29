@@ -5,7 +5,7 @@ interface Props { lang?: Lang; }
 const { lang = "el" } = Astro.props;
 const t = pick(lang);
 const videos = t.work.videos;
-const eyebrow = lang === "el" ? "VI · Επιλεγμένα έργα" : "VI · Selected work";
+const eyebrow = lang === "el" ? "06 · Επιλεγμένα έργα" : "06 · Selected work";
 const headingPre = lang === "el" ? "Πρόσφατα" : "Recent";
 const headingEm  = lang === "el" ? "σήματα." : "signals.";
 const viewAll = lang === "el" ? "Δες όλα →" : "View all →";

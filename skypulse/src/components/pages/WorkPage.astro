@@ -35,7 +35,7 @@ const movement = lang === "el" ? "Κίνηση" : "Movement";
           </span>
         </button>
         <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 eyebrow-mono">
-          <span>{movement} {["I","II","III","IV"][i]}</span>
+          <span>{movement} {String(i + 1).padStart(2, "0")}</span>
           <span class="hidden sm:block h-px flex-1 bg-[#E0D8EC]"></span>
           <span>{video.duration} · {video.bpm} bpm · {video.key}</span>
         </div>
