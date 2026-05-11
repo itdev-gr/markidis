@@ -208,10 +208,10 @@ export const strings = {
     whySkyPulse: {
       lede: "Γιατί Sky Pulse.",
       pillars: [
-        { name: "Εξειδίκευση",            desc: "Δουλεύουμε αποκλειστικά με καλλιτεχνικά αθλήματα. Όχι ως παρένθεση." },
-        { name: "Καλλιτεχνική Προσέγγιση", desc: "Πρώτα ακούμε την κίνηση. Η μουσική έρχεται μετά." },
-        { name: "Προσωποποιημένη Εμπειρία", desc: "Καμία σύνθεση δεν επαναχρησιμοποιείται. Κάθε πρόγραμμα ξεκινάει από την αρχή." },
-        { name: "Υψηλή Ποιότητα Ήχου",     desc: "Παραγωγή στούντιο χωρίς εκπτώσεις. Έτοιμη για αρένα από την πρώτη παράδοση." },
+        { name: "Εξειδίκευση",            desc: "Αποκλειστική εστίαση σε αθλήματα." },
+        { name: "Καλλιτεχνική Προσέγγιση", desc: "Μεταφράζουμε την κίνηση σε ήχο." },
+        { name: "Προσωποποιημένη Εμπειρία", desc: "Κάθε αθλητής είναι μοναδικός — και η μουσική του επίσης." },
+        { name: "Υψηλή Ποιότητα Ήχου",     desc: "Παραγωγή επιπέδου studio, με προσοχή στη λεπτομέρεια." },
       ],
     },
   },
@@ -385,10 +385,10 @@ export const strings = {
     whySkyPulse: {
       lede: "Why Sky Pulse.",
       pillars: [
-        { name: "Specialization",           desc: "We only work with aesthetic sports. Not a side project." },
-        { name: "Artistic Approach",        desc: "We listen to the movement first. The music follows." },
-        { name: "Personalized Experience",  desc: "No composition gets reused. Every program starts from a blank page." },
-        { name: "High-Fidelity Sound",      desc: "Studio-grade production, no shortcuts. Arena-ready from the first delivery." },
+        { name: "Specialization",           desc: "Exclusive focus on athletic disciplines." },
+        { name: "Artistic Approach",        desc: "We translate movement into sound." },
+        { name: "Personalized Experience",  desc: "Every athlete is unique — and so is their music." },
+        { name: "High-Fidelity Sound",      desc: "Studio-grade production, with attention to detail." },
       ],
     },
   },
