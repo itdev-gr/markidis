@@ -6,6 +6,7 @@ const { lang = "el" } = Astro.props;
 const t = pick(lang);
 
 const cards = t.disciplines.cards.slice(0, 4);
+const videos = t.work.videos.slice(0, 4);
 
 const images = ["/media/thumb-1.jpg", "/media/thumb-2.jpg", "/media/thumb-3.jpg", "/media/thumb-4.jpg"];
 ---
@@ -22,9 +23,20 @@ const images = ["/media/thumb-1.jpg", "/media/thumb-2.jpg", "/media/thumb-3.jpg"
               <p class="eyebrow-mono text-[#8E8E9F] mt-5 max-w-md">{c.code} · {c.note}</p>
             </div>
             <div class="col-span-12 md:col-span-5 relative">
-              <div class="aspect-[3/4] w-full overflow-hidden halftone" style="clip-path: polygon(0 0, 100% 6%, 94% 100%, 0 94%);">
-                <img src={images[i]} alt={c.name} class="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
-              </div>
+              <button
+                type="button"
+                class="video-tile group relative aspect-[3/4] w-full overflow-hidden halftone cursor-pointer block"
+                style="clip-path: polygon(0 0, 100% 6%, 94% 100%, 0 94%);"
+                data-vimeo={videos[i]?.id}
+                aria-label={`Play: ${videos[i]?.title ?? c.name}`}
+              >
+                <img src={images[i]} alt={c.name} class="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]" loading={i === 0 ? "eager" : "lazy"} />
+                <span class="absolute inset-0 grid place-items-center pointer-events-none">
+                  <span class="inline-flex items-center justify-center w-16 h-16 rounded-full border border-white text-white">
+                    <svg width="18" height="18" viewBox="0 0 22 22"><path d="M6 3v16l14-8L6 3z" fill="currentColor"/></svg>
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </article>
