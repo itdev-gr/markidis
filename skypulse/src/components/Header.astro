@@ -17,12 +17,7 @@ const home = u("/");
       <img src="/media/logo.svg" alt="Sky Pulse" width="176" height="56" />
     </a>
 
-    <nav class="sp-nav" aria-label="Primary">
-      <a href={u("/work")}    class="sp-link">{t.nav.work}</a>
-      <a href={u("/process")} class="sp-link">{t.nav.process}</a>
-      <a href={u("/studio")}  class="sp-link">{t.nav.studio}</a>
-      <a href={u("/contact")} class="sp-link">{t.nav.contact}</a>
-    </nav>
+    <nav class="sp-nav" aria-label="Primary"></nav>
 
     <div class="sp-header-meta">
       <div class="sp-lang" role="group" aria-label="Language">
@@ -40,12 +35,7 @@ const home = u("/");
 </header>
 
 <div id="mobileMenu" class="sp-mobile">
-  <nav>
-    <a href={u("/work")}>{t.nav.work}</a>
-    <a href={u("/process")}>{t.nav.process}</a>
-    <a href={u("/studio")}>{t.nav.studio}</a>
-    <a href={u("/contact")}>{t.nav.contact}</a>
-  </nav>
+  <nav></nav>
   <div class="sp-mobile-foot">
     <a href={`mailto:${t.common.email}`}>{t.common.email}</a>
     <a href={t.common.phoneHref}>{t.common.phone}</a>

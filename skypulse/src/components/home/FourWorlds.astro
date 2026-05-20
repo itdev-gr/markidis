@@ -6,21 +6,11 @@ const { lang = "el" } = Astro.props;
 const t = pick(lang);
 
 const cards = t.disciplines.cards.slice(0, 4);
-const eyebrow = lang === "el" ? "02 · Τέσσερις κόσμοι, μία ροή" : "02 · Four worlds, one flow";
-const heading = lang === "el" ? ["Τέσσερις κόσμοι,", "μία ροή."] : ["Four worlds,", "one flow."];
 
 const images = ["/media/thumb-1.jpg", "/media/thumb-2.jpg", "/media/thumb-3.jpg", "/media/thumb-4.jpg"];
 ---
 <section data-section="four-worlds" class="relative z-10" aria-label="Four disciplines">
   <div data-worlds-pin class="relative h-screen overflow-hidden">
-
-    <header class="pointer-events-none absolute top-0 left-0 right-0 page-x pb-8 z-20 bg-gradient-to-b from-white via-white/92 to-transparent" style="padding-top: calc(var(--nav-h) + 1rem);">
-      <p class="eyebrow-mono mb-3">{eyebrow}</p>
-      <h2 class="display-md max-w-[18ch]">
-        {heading[0]}<br />
-        <span class="serif-italic">{heading[1]}</span>
-      </h2>
-    </header>
 
     <div data-worlds-track class="absolute inset-0 flex">
       {cards.map((c, i) => (

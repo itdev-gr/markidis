@@ -2,7 +2,7 @@ export const strings = {
   el: {
     common: {
       email: "info@sky-pulse.gr",
-      phone: "+30 6932 669999",
+      phone: "+30 6932669999",
       phoneHref: "tel:+306932669999",
       address: "Αθήνα · Ελλάδα",
     },
@@ -130,10 +130,10 @@ export const strings = {
     disciplines: {
       lede: "Κάθε άθλημα, η δική του γραμματική.",
       cards: [
-        { name: "Καλλιτεχνικό Πατινάζ",    code: "FS", note: "Χρονομετρήσεις ISU · accents προσαρμοσμένα στις κόψεις", glyph: "♩" },
-        { name: "Ρυθμική Γυμναστική",      code: "RG", note: "Όργανα FIG · ρυθμικές βάσεις για το πέταγμα",             glyph: "♪" },
-        { name: "Ενόργανη Γυμναστική",     code: "AG", note: "Ελεύθερες 1:20 · stingers συγχρονισμένα με tumbling",     glyph: "♫" },
-        { name: "Show Choreography",       code: "SC", note: "Gala & επιδείξεις · αφηγηματικές καμπύλες",               glyph: "𝄐" },
+        { name: "Demo 1",                  code: "FS", note: "Χρονομετρήσεις ISU · accents προσαρμοσμένα στις κόψεις", glyph: "♩" },
+        { name: "Demo 2",      code: "RG", note: "Όργανα FIG · ρυθμικές βάσεις για το πέταγμα",             glyph: "♪" },
+        { name: "Demo 3",                  code: "AG", note: "Ελεύθερες 1:20 · stingers συγχρονισμένα με tumbling",     glyph: "♫" },
+        { name: "Demo 4",                  code: "SC", note: "Gala & επιδείξεις · αφηγηματικές καμπύλες",               glyph: "𝄐" },
         { name: "Performance Sports",      code: "PS", note: "Ακροβατικά · cheer · synchro",                             glyph: "𝄋" },
       ],
       marquee: ["Precision", "Performance", "Emotion", "ο ήχος της κίνησής σου"],
@@ -219,7 +219,7 @@ export const strings = {
   en: {
     common: {
       email: "info@sky-pulse.gr",
-      phone: "+30 6932 669999",
+      phone: "+30 6932669999",
       phoneHref: "tel:+306932669999",
       address: "Athens · Greece",
     },
@@ -307,9 +307,9 @@ export const strings = {
     disciplines: {
       lede: "Each discipline, its own grammar.",
       cards: [
-        { name: "Figure Skating",      code: "FS", note: "ISU timing · edge-aware accents",          glyph: "♩" },
+        { name: "Demo 1",              code: "FS", note: "ISU timing · edge-aware accents",          glyph: "♩" },
         { name: "Rhythmic Gymnastics", code: "RG", note: "FIG apparatus · pulse beds for the toss",   glyph: "♪" },
-        { name: "Artistic Gymnastics", code: "AG", note: "Floor 1:20 · tumbling-synced stingers",     glyph: "♫" },
+        { name: "Demo 3",              code: "AG", note: "Floor 1:20 · tumbling-synced stingers",     glyph: "♫" },
         { name: "Show Choreography",   code: "SC", note: "Gala & exhibition · narrative arcs",        glyph: "𝄐" },
         { name: "Performance Sports",  code: "PS", note: "Acrobatic · cheer · synchro",                glyph: "𝄋" },
       ],

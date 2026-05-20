@@ -459,7 +459,7 @@ function initManifestoPin() {
     onEnter:     () => { gsap.to(wrap, { backgroundColor: "#1A1A2E", color: "#FFFFFF", duration: 0.6 }); (window as any).__flow?.setPreset("manifesto", 1200); },
     onLeave:     () => { gsap.to(wrap, { backgroundColor: "#FFFFFF", color: "#1A1A2E", duration: 0.6 }); (window as any).__flow?.setPreset("worlds", 800); },
     onEnterBack: () => { gsap.to(wrap, { backgroundColor: "#1A1A2E", color: "#FFFFFF", duration: 0.6 }); (window as any).__flow?.setPreset("manifesto", 1200); },
-    onLeaveBack: () => { gsap.to(wrap, { backgroundColor: "#FFFFFF", color: "#1A1A2E", duration: 0.6 }); (window as any).__flow?.setPreset("hero", 800); },
+    onLeaveBack: () => { gsap.to(wrap, { backgroundColor: "#FFFFFF", color: "#1A1A2E", duration: 0.6 }); (window as any).__flow?.setPreset("cameo", 800); },
     animation: gsap.timeline()
       .to("[data-mword]", { opacity: 1, stagger: { amount: 1 } }, 0)
       .to("[data-manifesto-wave]", { strokeDashoffset: 0, duration: 1, ease: "none" }, 0),
@@ -536,8 +536,7 @@ function initCameoFeature() {
     animation: gsap.timeline()
       .from("[data-cameo-eyebrow]", { y: 40, opacity: 0, duration: 1 }, 0)
       .from("[data-cameo-title]",   { y: 60, opacity: 0, duration: 1 }, 0.2)
-      .from("[data-cameo-body]",    { y: 30, opacity: 0, duration: 1 }, 0.4)
-      .from("[data-cameo-cta]",     { y: 30, opacity: 0, duration: 1 }, 0.6),
+      .from("[data-cameo-body]",    { y: 30, opacity: 0, duration: 1 }, 0.4),
   });
 }
 
