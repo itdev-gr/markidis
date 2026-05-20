@@ -4,7 +4,7 @@ import { pick, type Lang } from "../i18n/strings";
 interface Props { lang?: Lang; }
 const { lang = "el" } = Astro.props;
 const s = pick(lang).cta;
-const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || "f3079acc-6b3e-46bd-94f6-134228536788";
 const errorText = lang === "el"
   ? "Κάτι πήγε στραβά. Δοκίμασε ξανά ή στείλε email."
   : "Something went wrong. Try again or email us.";
