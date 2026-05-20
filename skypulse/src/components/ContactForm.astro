@@ -1,0 +1,120 @@
+---
+import { pick, type Lang } from "../i18n/strings";
+
+interface Props { lang?: Lang; }
+const { lang = "el" } = Astro.props;
+const s = pick(lang).cta;
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
+const errorText = lang === "el"
+  ? "Κάτι πήγε στραβά. Δοκίμασε ξανά ή στείλε email."
+  : "Something went wrong. Try again or email us.";
+const subject = lang === "el"
+  ? "Sky Pulse — νέο brief"
+  : "Sky Pulse — new brief";
+---
+<form
+  data-contact-form
+  data-success={s.successAlert}
+  data-error={errorText}
+  class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10"
+>
+  <input type="hidden" name="access_key" value={accessKey} />
+  <input type="hidden" name="subject" value={subject} />
+  <input type="hidden" name="from_name" value="Sky Pulse Site" />
+
+  <div class="field">
+    <label class="eyebrow-mono mb-2 block" for="cf-name">{s.fields.name}</label>
+    <input id="cf-name" name="name" required autocomplete="name" />
+  </div>
+  <div class="field">
+    <label class="eyebrow-mono mb-2 block" for="cf-email">{s.fields.email}</label>
+    <input id="cf-email" name="email" type="email" required autocomplete="email" />
+  </div>
+  <div class="field">
+    <label class="eyebrow-mono mb-2 block" for="cf-sport">{s.fields.sport}</label>
+    <input id="cf-sport" name="sport" placeholder={s.fields.sportPh} required />
+  </div>
+  <div class="field">
+    <label class="eyebrow-mono mb-2 block" for="cf-length">{s.fields.length}</label>
+    <input id="cf-length" name="length" placeholder={s.fields.lengthPh} required />
+  </div>
+  <div class="field sm:col-span-2">
+    <label class="eyebrow-mono mb-2 block" for="cf-brief">{s.fields.brief}</label>
+    <textarea id="cf-brief" name="brief" rows="5" placeholder={s.fields.briefPh}></textarea>
+  </div>
+
+  <div class="sm:col-span-2 mt-4 flex items-center gap-6 flex-wrap">
+    <button class="sp-btn sp-btn-primary" data-magnetic="0.35" type="submit">
+      <span>{s.submit}</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+    <p data-form-message class="eyebrow-mono" role="status" aria-live="polite"></p>
+  </div>
+</form>
+
+<style>
+  [data-contact-form] input,
+  [data-contact-form] textarea {
+    width: 100%;
+    background: transparent;
+    color: #1A1A2E;
+    border: 0;
+    border-bottom: 1px solid #1A1A2E;
+    padding: 0.6rem 0;
+    font-family: "Newsreader", serif;
+    font-size: 1.15rem;
+    outline: none;
+    transition: border-color .3s ease;
+    resize: vertical;
+  }
+  [data-contact-form] input:focus,
+  [data-contact-form] textarea:focus {
+    border-bottom-color: #8B6BAF;
+    border-bottom-width: 2px;
+  }
+  [data-form-message] { opacity: 0; transition: opacity .3s ease; }
+  [data-form-message][data-state="success"] { color: #4A7C59; opacity: 1; }
+  [data-form-message][data-state="error"]   { color: #B0413E; opacity: 1; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>("form[data-contact-form]").forEach((form) => {
+    const msg = form.querySelector<HTMLElement>("[data-form-message]");
+    const submitBtn = form.querySelector<HTMLButtonElement>("button[type=submit]");
+    const successText = form.dataset.success ?? "Thanks!";
+    const errorText = form.dataset.error ?? "Something went wrong.";
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!submitBtn || !msg) return;
+      submitBtn.disabled = true;
+      msg.removeAttribute("data-state");
+      msg.textContent = "";
+
+      const payload: Record<string, string> = {};
+      new FormData(form).forEach((value, key) => { payload[key] = value.toString(); });
+
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (data.success) {
+          msg.textContent = successText;
+          msg.setAttribute("data-state", "success");
+          form.reset();
+        } else {
+          msg.textContent = errorText;
+          msg.setAttribute("data-state", "error");
+        }
+      } catch {
+        msg.textContent = errorText;
+        msg.setAttribute("data-state", "error");
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  });
+</script>

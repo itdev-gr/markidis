@@ -1,5 +1,6 @@
 ---
 import { pick, type Lang } from "../../i18n/strings";
+import ContactForm from "../ContactForm.astro";
 
 interface Props { lang?: Lang; }
 const { lang = "el" } = Astro.props;
@@ -22,6 +23,10 @@ const firstLine = titleWords.join(" ");
   </h2>
 
   <p class="mt-8 max-w-[50ch] text-[#8E8E9F] body-serif">{cta.sub}</p>
+
+  <div class="mt-16 max-w-3xl">
+    <ContactForm lang={lang} />
+  </div>
 
   <div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl">
     <div>
